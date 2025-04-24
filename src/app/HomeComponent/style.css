@@ -1,0 +1,58 @@
+.home-bg {
+    background-image: url('/home/banner.webp');
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 80vh;
+    background-attachment: fixed;
+    background-position: center center;
+}
+
+.home-bg::before {
+    content: "";
+    background-color: #000;
+    height: 80vh;
+    width: 100%;
+    position: absolute;
+    z-index: 1;
+    opacity: .5;
+}
+
+.bg-seller {
+    background-color: #f1f1f1;
+}
+
+
+.bg-process {
+    background-color: #f4f4f4;
+}
+
+.process-card {
+    background-color: #ececec;
+}
+
+.process-card img {
+    border-radius: 10px 10px;
+}
+
+.process-card {
+    border-radius: 10px 10px;
+}
+
+.bg-explore {
+    background-image: url('/home/3.webp');
+    background-size: cover;
+    background-position: center;
+    height: 82vh;
+}
+
+@media screen and (max-width: 991px) {
+    .bg-explore {
+        height: 100vh;
+    }
+
+    .logo img {
+        position: absolute;
+        top: 50px;
+        left: 50px;
+    }
+}
