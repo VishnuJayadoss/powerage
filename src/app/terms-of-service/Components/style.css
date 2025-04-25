@@ -1,0 +1,18 @@
+.terms-bg {
+    background-image: url('/home/banner.webp');
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 80vh;
+    background-attachment: fixed;
+    background-position: center center;
+}
+
+.terms-bg::before {
+    content: "";
+    background-color: #000;
+    height: 80vh;
+    width: 100%;
+    position: absolute;
+    z-index: 1;
+    opacity: .3;
+}

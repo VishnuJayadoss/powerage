@@ -45,7 +45,7 @@
     height: 82vh;
 }
 
-@media screen and (max-width: 991px) {
+@media screen and (max-width: 767px) {
     .bg-explore {
         height: 94vh;
     }
