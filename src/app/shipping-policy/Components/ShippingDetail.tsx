@@ -47,7 +47,7 @@ export default function ShippingDetail() {
                 <p className="pb-6">Orders are processed within 1-2 working days.</p>
 
                 <p className="pb-4"><strong>TRACK MY ORDER</strong></p>
-                <p className="pb-6">An email notification will be sent once your order has been dispatched. You can track its progress using the AWB number provided on the logistics partners' website.</p>
+                <p className="pb-6">An email notification will be sent once your order has been dispatched. You can track its progress using the AWB number provided on the logistics partners&#39; website.</p>
 
                 <p className="pb-4"><strong>ESTIMATED DELIVERY TIME</strong></p>
                 <p className="pb-6">Standard delivery time is 7-10 working days through air via our logistics partners. However, some areas may take longer.</p>
