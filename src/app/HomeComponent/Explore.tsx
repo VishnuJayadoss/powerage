@@ -2,6 +2,7 @@
 
 import { useRef, useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
+import type { Swiper as SwiperType } from 'swiper';
 import { Navigation } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/navigation';
@@ -38,7 +39,7 @@ const bikes = [
 export default function Explore() {
     const [isOpen, setIsOpen] = useState(false);
     const [videoUrl, setVideoUrl] = useState('');
-    const swiperRef = useRef<any>(null);
+    const swiperRef = useRef<SwiperType | null>(null);
 
     const openModal = (url: string) => {
         const embedUrl = url.includes('watch?v=')

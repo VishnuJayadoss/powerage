@@ -2,7 +2,7 @@ export default function Form() {
     return (
         <section className="bg-black px-6 py-10 text-white text-center">
             <h4 className="mb-8 font-semibold text-2xl sm:text-3xl capitalize">
-                Get in touch and we'll be happy to help.
+                Get in touch and we&#39;ll be happy to help.
             </h4>
 
             <form className="space-y-4 mx-auto max-w-xl text-left">

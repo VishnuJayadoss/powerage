@@ -14,7 +14,8 @@ export default function ShippingDetail() {
                 <p className="pb-6">Confirmed orders are processed within 1-2 business days.</p>
 
                 <p className="pb-4"><strong>TRACK AN ORDER</strong></p>
-                <p className="pb-6">Once dispatched, you will receive a notification email or message with the tracking information. You can track your order's progress on the logistics partner's website.</p>
+                <p className="pb-6">Once dispatched, you will receive a notification email or message with the tracking information. You can track your order&#39;s progress on the logistics partner&#39;s website.</p>
+
 
                 <p className="pb-4"><strong>ESTIMATED DELIVERY TIME</strong></p>
                 <p className="pb-6">The standard delivery time for orders is 5-7 business days via surface through our logistics partners. However, due to external factors such as during festivals, public holidays, monsoons, unseasonal rains etc, delivery time may be longer.</p>
@@ -40,7 +41,7 @@ export default function ShippingDetail() {
 
                 <p className="pb-4"><strong>ADDITIONAL CUSTOMS DUTY/VAT/TAXES</strong></p>
 
-               <p className="pb-6">Shipments may be subject to import duties, customs fees, and taxes as per the laws of the destination country. These fees are the responsibility of the recipient and are not included in the shipping charges. The fees for these duties and taxes vary by country and can change, so we cannot provide an estimate on the same.</p>
+                <p className="pb-6">Shipments may be subject to import duties, customs fees, and taxes as per the laws of the destination country. These fees are the responsibility of the recipient and are not included in the shipping charges. The fees for these duties and taxes vary by country and can change, so we cannot provide an estimate on the same.</p>
 
                 <p className="pb-4"><strong>PROCESSING TIME</strong></p>
                 <p className="pb-6">Orders are processed within 1-2 working days.</p>
