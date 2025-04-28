@@ -92,7 +92,7 @@ export default function ProfileDetail() {
                         + Add
                     </button>
                 </div>
-                <p className="text-[16px]">D.No. 54, 1st Floor, Above Hang Out, <br></br> Bharathi Park Rd, 7th cross,<br></br> Saibaba colony,<br></br> Coimbatore - 641011.</p>
+                <p className="text-[16px]">D.No. 54, 1st Floor, Above Hang &apos;Out&apos;, <br /> Bharathi Park Rd, 7th cross,<br /> Saibaba colony,<br /> Coimbatore - 641011.</p>
             </div>
 
             {/* Popup */}

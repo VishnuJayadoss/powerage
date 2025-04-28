@@ -7,7 +7,8 @@ import Link from "next/link";
 export default function OTPDetail() {
     const [code, setCode] = useState("");
 
-    const handleChange = (e: { target: { value: any; }; }) => {
+    // Properly typing the event in handleChange function
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const value = e.target.value;
         // Allow only digits (0-9)
         if (/^\d*$/.test(value)) {
