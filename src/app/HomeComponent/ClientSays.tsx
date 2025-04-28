@@ -1,37 +1,50 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import Image from 'next/image';
 import { FaPlay } from 'react-icons/fa';
+import { Autoplay } from "swiper/modules";
 
-const video = [
-    {
-        title: 'client',
-        image: '/home/banner.webp',
-        videoUrl: 'https://www.youtube.com/watch?v=Z6EFEXqRED4',
-    },
-    {
-        title: 'client',
-        image: '/home/banner.webp',
-        videoUrl: 'https://www.youtube.com/watch?v=Z6EFEXqRED4',
-    },
-    {
-        title: 'client',
-        image: '/home/banner.webp',
-        videoUrl: 'https://www.youtube.com/watch?v=Z6EFEXqRED4',
-    },
-    {
-        title: 'client',
-        image: '/home/banner.webp',
-        videoUrl: 'https://www.youtube.com/watch?v=Z6EFEXqRED4',
-    },
-];
+
 
 export default function ClientSays() {
     const [isOpen, setIsOpen] = useState(false);
     const [videoUrl, setVideoUrl] = useState('');
+    const [mounted, setMounted] = useState(false);
+
+    useEffect(() => {
+        setMounted(true);
+    }, []);
+
+
+    const video = [
+        {
+            title: 'client',
+            image: '/home/banner.webp',
+            videoUrl: 'https://www.youtube.com/watch?v=Z6EFEXqRED4',
+        },
+        {
+            title: 'client',
+            image: '/home/banner.webp',
+            videoUrl: 'https://www.youtube.com/watch?v=Z6EFEXqRED4',
+        },
+        {
+            title: 'client',
+            image: '/home/banner.webp',
+            videoUrl: 'https://www.youtube.com/watch?v=Z6EFEXqRED4',
+        },
+        {
+            title: 'client',
+            image: '/home/banner.webp',
+            videoUrl: 'https://www.youtube.com/watch?v=Z6EFEXqRED4',
+        },
+    ];
+
+    if (!mounted) {
+        return null;
+    }
 
     const openModal = (url: string) => {
         // Convert YouTube watch URL to embed format
@@ -66,6 +79,10 @@ export default function ClientSays() {
                             640: { slidesPerView: 1.5 },
                             768: { slidesPerView: 2 },
                             1024: { slidesPerView: 3 },
+                        }}
+                        modules={[Autoplay]}
+                        autoplay={{
+                            delay: 3000,
                         }}
                     >
                         {video.map((videos, index) => (

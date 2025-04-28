@@ -170,9 +170,9 @@ export default function Desktop() {
 
                                     {/* Middle column links */}
                                     <div className="flex flex-col gap-5">
-                                        <Link href="#" className="hover:text-red-600">Royal Enfield</Link>
-                                        <Link href="#" className="hover:text-red-600">Honda</Link>
-                                        <Link href="#" className="hover:text-red-600">Hero</Link>
+                                        <Link href="/category" className="hover:text-red-600">Royal Enfield</Link>
+                                        <Link href="/category" className="hover:text-red-600">Honda</Link>
+                                        <Link href="/category" className="hover:text-red-600">Hero</Link>
                                     </div>
 
                                     {/* Divider */}
@@ -181,7 +181,7 @@ export default function Desktop() {
                                     {/* Right column links */}
                                     <div className="flex flex-col gap-2">
 
-                                        <Link href="/product/exhaust-accessories" className="hover:text-red-600">Exhaust Accessories</Link>
+                                        <Link href="/category" className="hover:text-red-600">Exhaust Accessories</Link>
                                     </div>
                                 </div>
                             </div>
@@ -189,13 +189,13 @@ export default function Desktop() {
                     )}
                 </div>
 
-                <Link href='#' className='pt-2 hover:text-red-600'>
+                <Link href='/about' className='pt-2 hover:text-red-600'>
                     ABOUT
                 </Link>
-                <Link href='#' className='pt-2 hover:text-red-600'>
+                <Link href='/dealer' className='pt-2 hover:text-red-600'>
                     DEALER
                 </Link>
-                <Link href='#' className='pt-2 hover:text-red-600'>
+                <Link href='/contact' className='pt-2 hover:text-red-600'>
                     CONTACT
                 </Link>
             </nav>

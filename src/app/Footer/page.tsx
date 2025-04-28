@@ -36,13 +36,17 @@ export default function Footer() {
                     <div>
                         <h3 className="mb-2 font-semibold text-white text-lg">Quick Links</h3>
                         <ul className="space-y-2 mt-2">
-                            {['About', 'Products', 'Blog', 'Contact'].map((item, idx) => (
-                                <li key={idx}>
-                                    <Link href="#" className="block hover:text-red-500">
-                                        {item}
-                                    </Link>
-                                </li>
-                            ))}
+                            <li >
+                                <Link href="/about" className="block pb-3 hover:text-red-500">
+                                    About
+                                </Link>
+                                <Link href="/blog" className="block pb-3 hover:text-red-500">
+                                    Blog
+                                </Link>
+                                <Link href="/contact" className="block pb-3 hover:text-red-500">
+                                    Contact
+                                </Link>
+                            </li>
                         </ul>
                     </div>
 
@@ -50,24 +54,26 @@ export default function Footer() {
                     <div>
                         <h3 className="mb-2 font-semibold text-white text-lg">Policy Links</h3>
                         <ul className="space-y-2 mt-2">
-                            {[
-                                'Terms and Conditions',
-                                'Privacy Policy',
-                                'Shipping Policy',
-                                'Warranty and Return Policy'
-                            ].map((item, idx) => (
-                                <li key={idx}>
-                                    <Link href="#" className="block hover:text-red-500">
-                                        {item}
-                                    </Link>
-                                </li>
-                            ))}
+                            <li>
+                                <Link href="/terms-of-service" className="block pb-3 hover:text-red-500">
+                                    Terms and Conditions
+                                </Link>
+                                <Link href="/privacy-policy" className="block pb-3 hover:text-red-500">
+                                    Privacy Policy
+                                </Link>
+                                <Link href="/shipping-policy" className="block pb-3 hover:text-red-500">
+                                    Shipping Policy
+                                </Link>
+                                <Link href="/return-policy" className="block pb-3 hover:text-red-500">
+                                    Warrenty and Return Policy
+                                </Link>
+                            </li>
                         </ul>
                     </div>
                 </div>
 
                 {/* Social Icons */}
-                <div className="flex justify-center space-x-6 mt-8 text-white text-lg">
+                <div className="flex justify-center space-x-6 mt-2 text-white text-lg">
                     <Link href="https://www.facebook.com/powerageperformance?rdid=nCtQEs62fgAtp5D7&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F1BcuHFt5Pr%2F#"><FaFacebookF /></Link>
                     <Link href="https://www.instagram.com/powerage_performance/?igsh=MXBxdWR6MDduYnN1cg%3D%3D&utm_source=ig_contact_invite#"><FaInstagram /></Link>
                     <Link href="https://www.youtube.com/@powerageperformance"><FaYoutube /></Link>

@@ -65,13 +65,13 @@ export default function MobileHeader() {
                                         >
                                             Product <ChevronRight size={16} />
                                         </button>
-                                        <Link href='#' className='nav-link'>
+                                        <Link href='/about' className='nav-link'>
                                             About
                                         </Link>
-                                        <Link href='#' className='nav-link'>
+                                        <Link href='/dealer' className='nav-link'>
                                             Dealer
                                         </Link>
-                                        <Link href='#' className='nav-link'>
+                                        <Link href='/contact' className='nav-link'>
                                             Contact
                                         </Link>
                                     </>
@@ -80,16 +80,16 @@ export default function MobileHeader() {
                                 {/* Submenu */}
                                 {submenuOpen === 'product' && (
                                     <>
-                                        <Link href='#' className='nav-link'>
+                                        <Link href='/category' className='nav-link'>
                                             Royal Enfield
                                         </Link>
-                                        <Link href='#' className='nav-link'>
+                                        <Link href='/category' className='nav-link'>
                                             Hero
                                         </Link>
-                                        <Link href='#' className='nav-link'>
+                                        <Link href='/category' className='nav-link'>
                                             Honda
                                         </Link>
-                                        <Link href='#' className='nav-link'>
+                                        <Link href='/category' className='nav-link'>
                                             Exhaust Accessories
                                         </Link>
                                     </>
