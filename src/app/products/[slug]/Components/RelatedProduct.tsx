@@ -1,7 +1,8 @@
 'use client';
 
-import { useEffect, useRef } from "react";
+import { useRef } from "react";
 import { Swiper, SwiperSlide } from 'swiper/react';
+import { Swiper as SwiperType } from 'swiper'; // Import Swiper as type
 import 'swiper/css';
 import 'swiper/css/navigation';
 import Image from "next/image";
@@ -9,7 +10,7 @@ import Image from "next/image";
 export default function RelatedProduct() {
     const prevRef = useRef<HTMLButtonElement>(null);
     const nextRef = useRef<HTMLButtonElement>(null);
-    const swiperRef = useRef<any>(null);
+    const swiperRef = useRef<SwiperType | null>(null); // Use SwiperType as the type for swiperRef
 
     const products = [
         {
