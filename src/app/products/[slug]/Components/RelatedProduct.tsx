@@ -2,7 +2,6 @@
 
 import { useEffect, useRef } from "react";
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import Image from "next/image";
@@ -45,29 +44,12 @@ export default function RelatedProduct() {
         },
     ];
 
-    useEffect(() => {
-        if (
-            swiperRef.current &&
-            swiperRef.current.params &&
-            swiperRef.current.params.navigation
-        ) {
-            swiperRef.current.params.navigation.prevEl = prevRef.current;
-            swiperRef.current.params.navigation.nextEl = nextRef.current;
-            swiperRef.current.navigation.init();
-            swiperRef.current.navigation.update();
-        }
-    }, []);
-
     return (
         <>
             <div className="bg-seller p-6 lg:pt-[40px] lg:pr-[70px] lg:pb-[40px] lg:pl-[70px]">
                 {/* Heading and Controls */}
                 <div className="flex justify-between items-center pb-6">
                     <h3 className="font-semibold text-[20px] lg:text-[30px] uppercase">Related Product</h3>
-                    <div className="flex gap-2">
-                        <button ref={prevRef} className="hover:bg-red-600 p-2 px-6 py-1 border border-red-600 rounded text-red-600 hover:text-white transition cursor-pointer">Prev</button>
-                        <button ref={nextRef} className="hover:bg-red-600 p-2 px-6 py-1 border border-red-600 rounded text-red-600 hover:text-white transition cursor-pointer">Next</button>
-                    </div>
                 </div>
 
                 {/* Swiper */}
@@ -78,8 +60,11 @@ export default function RelatedProduct() {
                         640: { slidesPerView: 2 },
                         1024: { slidesPerView: 4 },
                     }}
-                    modules={[Navigation]}
                     onSwiper={(swiper) => (swiperRef.current = swiper)}
+                    navigation={{
+                        prevEl: prevRef.current,
+                        nextEl: nextRef.current
+                    }}
                 >
                     {products.map((product, index) => (
                         <SwiperSlide key={index}>
@@ -102,6 +87,12 @@ export default function RelatedProduct() {
                         </SwiperSlide>
                     ))}
                 </Swiper>
+
+                {/* Custom Navigation Buttons */}
+                <div className="swiper-navigation">
+                    <button ref={prevRef} className="swiper-button-prev">Prev</button>
+                    <button ref={nextRef} className="swiper-button-next">Next</button>
+                </div>
             </div>
         </>
     );
