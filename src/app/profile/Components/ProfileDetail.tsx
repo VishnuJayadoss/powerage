@@ -61,7 +61,7 @@ export default function ProfileDetail() {
                                 />
                             </div>
                             <p className="pt-2 text-gray-500 text-sm">
-                                Email used for login can't be changed
+                                Email used for login can&apos;t be changed
                             </p>
 
                             <div className="mt-4 text-end">
