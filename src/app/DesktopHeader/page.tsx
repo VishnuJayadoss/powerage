@@ -137,7 +137,7 @@ export default function Desktop() {
 
 
 
-            <nav className='hidden relative md:flex justify-center gap-[100px] py-2 border-gray-200 border-t !font-black text-md'>
+            <nav className='hidden relative md:flex justify-center gap-[100px] py-2 border-gray-200 border-t font-black text-md'>
                 <Link href='/' className='pt-2 hover:text-red-600'>
                     HOME
                 </Link>
