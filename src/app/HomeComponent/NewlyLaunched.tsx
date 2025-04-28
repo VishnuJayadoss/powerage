@@ -5,7 +5,7 @@ export default function NewlyLaunched() {
     return (
         <>
             <section className="p-8">
-                <h3 className="mb-6 font-semibold text-[25px]">NEWLY LAUNCHED</h3>
+                <h3 className="mb-6 font-extrabold text-[25px]">NEWLY LAUNCHED</h3>
 
                 <div className="gap-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
                     {[

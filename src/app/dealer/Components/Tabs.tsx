@@ -45,8 +45,8 @@ export default function Tabs() {
                 {["india", "europe", "japan"].map((tab) => (
                     <button
                         key={tab}
-                        className={`px-6 py-2 border ${activeTab === tab ? "border-red-500 text-black" : "border-black text-black"
-                            } rounded-md font-medium`}
+                        className={`px-6 py-2 border-[2px] ${activeTab === tab ? "border-red-600 text-black" : "border-black text-black"
+                            } font-extrabold hover:border-red-600`}
                         onClick={() => setActiveTab(tab)}
                     >
                         {tab.charAt(0).toUpperCase() + tab.slice(1)}
@@ -58,9 +58,9 @@ export default function Tabs() {
             <div className="space-y-8">
                 {tabContent[activeTab]?.map((item, index) => (
                     <div key={index} className="flex sm:flex-row flex-col items-start gap-4">
-                        <div className="bg-red-500 mt-1 w-4 h-4"></div>
+                        <div className="bg-red-600 mt-2 w-4 h-4"></div>
                         <div>
-                            <h3 className="mb-2 font-semibold text-lg">{item.title}</h3>
+                            <h3 className="mb-2 font-bold text-[22px]">{item.title}</h3>
                             <p className="text-gray-600">{item.description}</p>
                         </div>
                     </div>

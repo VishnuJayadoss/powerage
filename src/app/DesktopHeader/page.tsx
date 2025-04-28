@@ -3,13 +3,13 @@
 import { useState } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
-import { ChevronDown, User, ShoppingCart, Search } from 'lucide-react'
+import { ChevronDown, ShoppingCart, Search } from 'lucide-react'
+import { FaRegUser } from "react-icons/fa6";
 import { LuLogOut } from "react-icons/lu";
 import { IoMdClose } from "react-icons/io";
 import { motion, AnimatePresence } from 'framer-motion';
 
 export default function Desktop() {
-    const [isDropdownOpen, setDropdownOpen] = useState(false)
     const [isDropdownOpenprofile, setDropdownOpenprofile] = useState(false)
     const [showSearchPopup, setShowSearchPopup] = useState(false);
     const [searchQuery, setSearchQuery] = useState('');
@@ -42,10 +42,10 @@ export default function Desktop() {
 
                 <div className='flex items-center gap-6'>
                     <button onClick={() => setShowSearchPopup(true)}>
-                        <Search className='hover:text-red-600' />
+                        <Search className='hover:text-red-600 cursor-pointer' />
                     </button>
                     <div
-                        className="group relative"
+                        className="group top-[4px] relative"
                         onMouseEnter={() => window.innerWidth >= 768 && setDropdownOpenprofile(true)} // Only hover on desktop
                         onMouseLeave={() => window.innerWidth >= 768 && setDropdownOpenprofile(false)}
                     >
@@ -54,15 +54,15 @@ export default function Desktop() {
                             onClick={handleIconClick}
                             className="cursor-pointer"
                         >
-                            <User className="hover:text-red-600" />
+                            <FaRegUser size={18} className="hover:text-red-600" />
                         </button>
 
                         {/* Dropdown menu */}
                         {isDropdownOpenprofile && (
-                            <div className="top-3 right-[-20px] z-50 absolute bg-white shadow-lg mt-2 rounded-md w-40">
+                            <div className="top-5 right-[-30px] z-50 absolute bg-white shadow-lg mt-2 rounded-md w-40">
                                 <div className="py-2">
                                     <Link href="/profile" className="flex items-center gap-2 hover:bg-gray-100 px-4 py-2">
-                                        <User size={18} />
+                                        <FaRegUser size={18} />
                                         <span>Profile</span>
                                     </Link>
                                     <Link href="/logout" className="flex items-center gap-2 hover:bg-gray-100 px-4 py-2">
@@ -137,57 +137,55 @@ export default function Desktop() {
 
 
 
-            <nav className='hidden relative md:flex justify-center gap-[100px] py-2 border-gray-200 border-t font-semibold text-sm'>
+            <nav className='hidden relative md:flex justify-center gap-[100px] py-2 border-gray-200 border-t !font-black text-md'>
                 <Link href='/' className='pt-2 hover:text-red-600'>
                     HOME
                 </Link>
 
                 <div className="relative pt-2">
+                    {/* Button */}
                     <button
-                        className="flex items-center hover:text-red-600"
-                        onClick={() => setDropdownOpen(!isDropdownOpen)}
+                        className="peer flex items-center hover:text-red-600"
                     >
                         PRODUCT <ChevronDown size={16} className="ml-1" />
                     </button>
 
-                    {isDropdownOpen && (
-                        <div className="right-0 left-[-460px] z-50 absolute bg-[#f5f5f5] shadow-xl mt-4 px-8 py-6 rounded-md w-[1340px] h-40 text-sm">
-                            <div className="flex gap-8 mx-auto">
+                    {/* Dropdown */}
+                    <div className="invisible hover:visible peer-hover:visible right-0 left-[-450px] z-50 absolute bg-[#f5f5f5] opacity-0 hover:opacity-100 peer-hover:opacity-100 shadow-xl mt-4 px-8 py-6 rounded-md w-[1340px] h-40 text-sm transition-all duration-300">
+                        <div className="flex gap-8 mx-auto w-full">
 
-                                {/* Left: Store message */}
-                                <div className="w-1/2">
-                                    <p className="pt-5 font-light text-[30px] text-gray-700">
-                                        Visit Our <br />
-                                        <span className="font-medium text-red-600">Store</span>
-                                    </p>
+                            {/* Left: Store message */}
+                            <div className="w-1/2">
+                                <p className="pt-5 font-light text-[30px] text-gray-700">
+                                    Visit Our <br />
+                                    <span className="font-medium text-red-600">Store</span>
+                                </p>
+                            </div>
+
+                            {/* Divider */}
+                            <div className="bg-gray-300 w-px"></div>
+
+                            {/* Middle + Right */}
+                            <div className="flex gap-[60px] w-full">
+                                {/* Middle column links */}
+                                <div className="flex flex-col gap-5">
+                                    <Link href="/category" className="hover:text-red-600">Royal Enfield</Link>
+                                    <Link href="/category" className="hover:text-red-600">Honda</Link>
+                                    <Link href="/category" className="hover:text-red-600">Hero</Link>
                                 </div>
 
                                 {/* Divider */}
-                                <div className="bg-gray-300 w-px"></div>
+                                <div className="bg-gray-300 ml-[120px] w-px"></div>
 
-                                {/* Middle + Right */}
-                                <div className="flex gap-[60px] w-full">
-
-                                    {/* Middle column links */}
-                                    <div className="flex flex-col gap-5">
-                                        <Link href="/category" className="hover:text-red-600">Royal Enfield</Link>
-                                        <Link href="/category" className="hover:text-red-600">Honda</Link>
-                                        <Link href="/category" className="hover:text-red-600">Hero</Link>
-                                    </div>
-
-                                    {/* Divider */}
-                                    <div className="bg-gray-300 ml-[120px] w-px"></div>
-
-                                    {/* Right column links */}
-                                    <div className="flex flex-col gap-2">
-
-                                        <Link href="/category" className="hover:text-red-600">Exhaust Accessories</Link>
-                                    </div>
+                                {/* Right column links */}
+                                <div className="flex flex-col gap-2">
+                                    <Link href="/category" className="hover:text-red-600">Exhaust Accessories</Link>
                                 </div>
                             </div>
                         </div>
-                    )}
+                    </div>
                 </div>
+
 
                 <Link href='/about' className='pt-2 hover:text-red-600'>
                     ABOUT

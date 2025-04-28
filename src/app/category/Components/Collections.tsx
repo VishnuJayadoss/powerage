@@ -10,16 +10,16 @@ export default function Collections() {
             <section className="p-8">
                 <div className="gap-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
                     {[
-                        { title: "Bear 650", img: "/home/banner.webp" },
-                        { title: "Bear 450", img: "/home/banner.webp" },
-                        { title: "650 Long", img: "/home/banner.webp" },
+                        { title: "Bear 650", img: "/home/banner.webp", slug: "products" },
+                        { title: "Bear 450", img: "/home/banner.webp", slug: "products" },
+                        { title: "650 Long", img: "/home/banner.webp", slug: "products" },
                     ].map((bike, idx) => (
                         <div key={idx} className="relative shadow-md rounded-2xl overflow-hidden transition-transform hover:-translate-y-2 duration-300">
                             {/* Overlay Content */}
                             <div className="z-10 absolute inset-0 flex flex-col justify-start bg-black/50 p-4 pl-[30px] h-[130px] text-white">
                                 <h3 className="pb-4 font-bold text-[26px]">{bike.title}</h3>
                                 <Link
-                                    href="#3"
+                                    href={bike.slug}
                                     className="inline-block bg-red-600 px-5 py-1 rounded-full w-[70px] text-white text-sm"
                                 >
                                     More

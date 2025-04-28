@@ -6,8 +6,8 @@ export default function Banner() {
             <section className="about-bg">
 
                 <div className="bottom-[100px] left-[50px] z-2 absolute text-white">
+                    <p className="pb-[8px] text-[14px] text-red-600 uppercase">our story</p>
                     <h3 className="pb-4 text-[40px]">ABOUT POWERAGE</h3>
-                    <Link href="#3" className="bg-red-600 pt-3 pr-[30px] pb-3 pl-[30px] rounded text-[18px]">All Product</Link>
                 </div>
 
             </section>

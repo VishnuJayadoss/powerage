@@ -66,12 +66,12 @@ export default function ClientSays() {
             <section className="bg-course">
                 <div className="mx-auto px-4 text-center container">
 
-                    <h2 className="pt-5 pb-3 font-bold text-slate-800 text-3xl md:text-4xl">
+                    <h2 className="pt-5 font-bold text-slate-800 text-3xl md:text-4xl">
                         What Our Clients Say
                     </h2>
                 </div>
 
-                <div className="p-5 pb-[40px]">
+                <div className="p-4 pb-[40px]">
                     <Swiper
                         spaceBetween={20}
                         slidesPerView={1.2}

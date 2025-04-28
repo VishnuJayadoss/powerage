@@ -2,7 +2,7 @@ import Image from "next/image";
 
 export default function Development() {
     return (
-        <section className="bg-[#f4f4f4] px-4 py-8">
+        <section className="bg-black px-4 py-8">
             <div className="items-center gap-6 grid grid-cols-1 lg:grid-cols-2 mx-auto max-w-6xl">
 
                 {/* Image Section */}
@@ -22,8 +22,9 @@ export default function Development() {
                 </div>
 
                 {/* Text Section */}
-                <div className="order-2 lg:order-1 bg-black shadow-lg p-6 sm:p-8 lg:p-12 rounded-2xl text-gray-300">
-                    <h2 className="mb-4 font-semibold text-white text-2xl sm:text-3xl">Development</h2>
+                <div className="order-2 lg:order-1 shadow-lg p-6 sm:p-8 lg:p-12 rounded-2xl text-gray-300">
+                    <h2 className="mb-2 font-extrabold text-white text-2xl sm:text-3xl">Development</h2>
+                    <div className="mb-2 border-red-600 border-b-[2px]"></div>
                     <p className="mb-4">
                         The highly specialized workforce is supported in every area by the highest level of technological know-how, in order to always achieve the finest outcome.
                     </p>

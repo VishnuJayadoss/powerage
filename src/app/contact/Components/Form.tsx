@@ -1,3 +1,6 @@
+'use client';
+
+
 export default function Form() {
     return (
         <section className="bg-black px-6 py-10 text-white text-center">
@@ -12,12 +15,14 @@ export default function Form() {
                         name="name"
                         placeholder="Name"
                         className="bg-transparent p-3 border border-white focus:border-hidden rounded-md focus:outline-none focus:ring-2 focus:ring-red-500 w-full text-white placeholder-gray-400"
+                        required
                     />
                     <input
                         type="email"
                         name="email"
                         placeholder="Email"
                         className="bg-transparent p-3 border border-white focus:border-hidden rounded-md focus:outline-none focus:ring-2 focus:ring-red-500 w-full text-white placeholder-gray-400"
+                        required
                     />
                 </div>
                 <input
@@ -25,12 +30,20 @@ export default function Form() {
                     name="phone"
                     placeholder="Phone Number"
                     className="bg-transparent p-3 border border-white focus:border-hidden rounded-md focus:outline-none focus:ring-2 focus:ring-red-500 w-full text-white placeholder-gray-400"
+                    inputMode="numeric"
+                    pattern="[0-9]*"
+                    maxLength={12}
+                    onInput={(e) => {
+                        e.currentTarget.value = e.currentTarget.value.replace(/[^0-9]/g, '');
+                    }}
+                    required
                 />
                 <textarea
                     name="comment"
                     rows={4}
                     placeholder="Comment"
                     className="bg-transparent p-3 border border-white focus:border-hidden rounded-md focus:outline-none focus:ring-2 focus:ring-red-500 w-full text-white placeholder-gray-400"
+                    required
                 />
 
                 <div className="pt-4">
