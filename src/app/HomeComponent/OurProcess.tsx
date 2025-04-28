@@ -1,6 +1,4 @@
 import Image from "next/image";
-import { describe } from "node:test";
-import { MdDescription } from "react-icons/md";
 
 export default function OurProcess() {
 
