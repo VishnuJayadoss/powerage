@@ -1,16 +1,21 @@
 'use client';
 
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Swiper as SwiperType } from 'swiper'; // Import Swiper as type
+import { Swiper as SwiperType } from 'swiper';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import Image from "next/image";
+import { Autoplay } from "swiper/modules";
 
 export default function RelatedProduct() {
-    const prevRef = useRef<HTMLButtonElement>(null);
-    const nextRef = useRef<HTMLButtonElement>(null);
-    const swiperRef = useRef<SwiperType | null>(null); // Use SwiperType as the type for swiperRef
+
+    const swiperRef = useRef<SwiperType | null>(null);
+    const [mounted, setMounted] = useState(false);
+
+    useEffect(() => {
+        setMounted(true);
+    }, []);
 
     const products = [
         {
@@ -45,56 +50,52 @@ export default function RelatedProduct() {
         },
     ];
 
-    return (
-        <>
-            <div className="bg-seller p-6 lg:pt-[40px] lg:pr-[70px] lg:pb-[40px] lg:pl-[70px]">
-                {/* Heading and Controls */}
-                <div className="flex justify-between items-center pb-6">
-                    <h3 className="font-semibold text-[20px] lg:text-[30px] uppercase">Related Product</h3>
-                </div>
+    if (!mounted) {
+        return null; // Return null to avoid rendering the Swiper during SSR
+    }
 
-                {/* Swiper */}
-                <Swiper
-                    spaceBetween={20}
-                    slidesPerView={1}
-                    breakpoints={{
-                        640: { slidesPerView: 2 },
-                        1024: { slidesPerView: 4 },
-                    }}
-                    onSwiper={(swiper) => (swiperRef.current = swiper)}
-                    navigation={{
-                        prevEl: prevRef.current,
-                        nextEl: nextRef.current
-                    }}
-                >
-                    {products.map((product, index) => (
-                        <SwiperSlide key={index}>
-                            <div className="bg-[#e6e2e2] p-4 rounded h-[320px] hover:-translate-y-2 duration-300">
-                                <div className="seller-card-img">
-                                    <Image src={product.image} alt="product" width={350} height={250} />
+    return (
+        <div className="bg-seller p-6 lg:pt-[40px] lg:pr-[70px] lg:pb-[40px] lg:pl-[70px]">
+            {/* Heading and Controls */}
+            <div className="flex justify-between items-center pb-6">
+                <h3 className="font-semibold text-[20px] lg:text-[30px] uppercase">Related Product</h3>
+            </div>
+
+            {/* Swiper */}
+            <Swiper
+                spaceBetween={20}
+                slidesPerView={1}
+                breakpoints={{
+                    640: { slidesPerView: 2 },
+                    1024: { slidesPerView: 4 },
+                }}
+                onSwiper={(swiper) => (swiperRef.current = swiper)}
+                modules={[Autoplay]}
+                autoplay={{
+                    delay: 3000,
+                }}
+            >
+                {products.map((product, index) => (
+                    <SwiperSlide key={index}>
+                        <div className="bg-[#e6e2e2] p-4 rounded h-[320px] hover:-translate-y-2 duration-300">
+                            <div className="seller-card-img">
+                                <Image src={product.image} alt="product" width={350} height={250} />
+                            </div>
+                            <div className="text-center seller-content">
+                                <div className="pb-2 card-title">
+                                    <h3>{product.title}</h3>
                                 </div>
-                                <div className="text-center seller-content">
-                                    <div className="pb-2 card-title">
-                                        <h3>{product.title}</h3>
-                                    </div>
-                                    <div className="pb-2 vendor">
-                                        <p className="text-[12px] text-gray-400 uppercase">{product.vendor}</p>
-                                    </div>
-                                    <div className="price">
-                                        <p>{product.price}</p>
-                                    </div>
+                                <div className="pb-2 vendor">
+                                    <p className="text-[12px] text-gray-400 uppercase">{product.vendor}</p>
+                                </div>
+                                <div className="price">
+                                    <p>{product.price}</p>
                                 </div>
                             </div>
-                        </SwiperSlide>
-                    ))}
-                </Swiper>
-
-                {/* Custom Navigation Buttons */}
-                <div className="swiper-navigation">
-                    <button ref={prevRef} className="swiper-button-prev">Prev</button>
-                    <button ref={nextRef} className="swiper-button-next">Next</button>
-                </div>
-            </div>
-        </>
+                        </div>
+                    </SwiperSlide>
+                ))}
+            </Swiper>
+        </div>
     );
 }
