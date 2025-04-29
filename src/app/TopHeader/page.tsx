@@ -10,7 +10,7 @@ export default function TopHeader() {
                         <p><span className="font-semibold">Worldwide</span> Shipping</p>
                     </div>
 
-                    <div className="right-[30px] relative flex justify-start items-center gap-2 text-white">
+                    <div className="lg:right-[30px] relative flex justify-start items-center gap-2 text-white">
                         <Image src="/india.webp" alt="India" width={30} height={30} />
                         <p><span className="font-semibold">Handcrafted in</span> India</p>
                     </div>
