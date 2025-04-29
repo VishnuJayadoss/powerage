@@ -40,7 +40,7 @@ export default function BestSeller() {
         <>
             <div className="bg-seller p-6 lg:pt-[20px] lg:pr-[70px] lg:pb-[30px] lg:pl-[70px]">
                 <div className="pb-[20px] text-center">
-                    <h3 className="inline-block px-6 py-2 border-[3px] border-red-600 font-extrabold text-[20px] uppercase">
+                    <h3 className="inline-block px-6 py-2 border-[3px] border-red-600 font-black text-[20px] uppercase">
                         Best Seller
                     </h3>
                 </div>
@@ -48,7 +48,7 @@ export default function BestSeller() {
                 <div className="gap-2 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
                     {seller.map((sellers, index) => (
                         <Link href={sellers.slug} key={index}>
-                            <div className="bg-white rounded hover:-translate-y-2 duration-300 seller-card">
+                            <div className="bg-[#f1f1f1] rounded hover:-translate-y-2 duration-300 seller-card">
                                 <div className="seller-card-img">
                                     <Image src={sellers.img} alt={sellers.title} width={350} height={250} className="object-cover" />
                                 </div>

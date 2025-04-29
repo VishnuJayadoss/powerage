@@ -20,7 +20,6 @@ export default function OurProcess() {
         }
     ];
 
-
     return (
         <>
             <div className="bg-process p-4 lg:pr-[70px] lg:pl-[70px]">
