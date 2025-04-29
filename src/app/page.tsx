@@ -1,5 +1,6 @@
 import "./HomeComponent/style.css"
 import Banner from "./HomeComponent/Banner";
+import Filter from "./HomeComponent/Filter";
 import Columns from "./HomeComponent/Columns";
 import NewlyLaunched from "./HomeComponent/NewlyLaunched";
 import Video from "./HomeComponent/Video";
@@ -13,6 +14,7 @@ export default function Home() {
   return (
     <>
       <Banner />
+      <Filter />
       <Columns />
       <NewlyLaunched />
       <Video />

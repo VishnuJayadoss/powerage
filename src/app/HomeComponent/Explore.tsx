@@ -92,9 +92,9 @@ export default function Explore() {
                             slidesPerView={1}
                             onSwiper={(swiper) => (swiperRef.current = swiper)}
                             breakpoints={{
-                                640: { slidesPerView: 1.3 },
+                                640: { slidesPerView: 1 },
                                 768: { slidesPerView: 2 },
-                                1024: { slidesPerView: 2.5 },
+                                1024: { slidesPerView: 2 },
                             }}
                             modules={[Navigation]}
                         >
@@ -106,7 +106,7 @@ export default function Explore() {
                                             alt={bike.model}
                                             width={500}
                                             height={300}
-                                            className="w-full h-100 lg:h-auto object-cover"
+                                            className="w-full h-100 object-cover"
                                         />
 
                                         {/* Text Overlay */}
