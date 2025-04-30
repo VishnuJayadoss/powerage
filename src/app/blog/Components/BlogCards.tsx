@@ -10,7 +10,7 @@ const blogcard = [
         desc: `All our systems are made from high grade 304 stainless steel for a long life
         of augmented performance. And also use high quality thermal and acoustic
         insulation.`,
-        slug: '#3'
+        slug: '/blog/detail'
     },
     {
         cardimg: '/home/banner.webp',
@@ -20,14 +20,24 @@ const blogcard = [
         desc: `All our systems are made from high grade 304 stainless steel for a long life
         of augmented performance. And also use high quality thermal and acoustic
         insulation.`,
-        slug: '#3'
+        slug: '/blog/detail'
+    },
+    {
+        cardimg: '/home/banner.webp',
+        title: 'High Quality Material',
+        date: 'April 3, 2025',
+        name: 'Panik Enterprises',
+        desc: `All our systems are made from high grade 304 stainless steel for a long life
+        of augmented performance. And also use high quality thermal and acoustic
+        insulation.`,
+        slug: '/blog/detail'
     }
 ];
 
 export default function BlogCards() {
     return (
         <section className="bg-[#f4f4f4] px-30 py-10">
-            <div className="gap-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2">
+            <div className="gap-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
                 {blogcard.map((card, index) => (
                     <div
                         key={index}

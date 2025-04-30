@@ -27,7 +27,7 @@ export default function Columns() {
                 {column.map((columns, index) => (
                     <div key={index} className="flex flex-col justify-center items-center pb-4 text-black text-center">
                         <Image src={columns.img} alt={columns.title} width={100} height={100} className="pb-3" />
-                        <h3 className="mt-2 font-semibold">{columns.title}</h3>
+                        <h3 className="mt-2 font-black text-[20px]">{columns.title}</h3>
                     </div>
                 ))}
             </div>

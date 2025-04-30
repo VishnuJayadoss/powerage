@@ -37,7 +37,7 @@ export default function Desktop() {
         <>
             <div className='flex justify-between items-center mx-auto px-4 py-3 pl-10 md:pl-0 lg:pl-0 max-w-7xl'>
                 <Link href='/' className='font-bold text-xl logo'>
-                    <Image src='/logo.png' alt='Logo' width={150} height={40} priority />
+                    <Image src='/logo.png' alt='Logo' width={150} height={40} priority className='pt-4 lg:pt-0' />
                 </Link>
 
                 <div className='flex items-center gap-6'>
@@ -137,21 +137,21 @@ export default function Desktop() {
 
 
 
-            <nav className='hidden relative md:flex justify-center gap-[100px] py-2 border-gray-200 border-t font-black text-md'>
-                <Link href='/' className='pt-2 hover:text-red-600'>
+            <nav className='hidden relative md:flex justify-center gap-[100px] border-gray-200 border-t font-black text-md'>
+                <Link href='/' className='pt-2 hover:text-red-600 cal-sans'>
                     HOME
                 </Link>
 
                 <div className="relative pt-2">
                     {/* Button */}
                     <button
-                        className="peer flex items-center hover:text-red-600"
+                        className="peer flex items-center hover:text-red-600 cal-sans"
                     >
                         PRODUCT <ChevronDown size={16} className="ml-1" />
                     </button>
 
                     {/* Dropdown */}
-                    <div className="invisible hover:visible peer-hover:visible right-0 left-[-450px] z-50 absolute bg-[#f5f5f5] opacity-0 hover:opacity-100 peer-hover:opacity-100 shadow-xl mt-4 px-8 py-6 rounded-md w-[1340px] h-40 text-sm transition-all duration-300">
+                    <div className="invisible hover:visible peer-hover:visible right-0 left-[-430px] z-50 absolute bg-[#f5f5f5] opacity-0 hover:opacity-100 peer-hover:opacity-100 shadow-xl mt-4 px-8 py-6 rounded-md lg:w-[1300px] h-40 text-sm transition-all duration-300 dropdown-menu-product">
                         <div className="flex gap-8 mx-auto w-full">
 
                             {/* Left: Store message */}
@@ -187,13 +187,13 @@ export default function Desktop() {
                 </div>
 
 
-                <Link href='/about' className='pt-2 hover:text-red-600'>
+                <Link href='/about' className='pt-2 hover:text-red-600 cal-sans'>
                     ABOUT
                 </Link>
-                <Link href='/dealer' className='pt-2 hover:text-red-600'>
+                <Link href='/dealer' className='pt-2 hover:text-red-600 cal-sans'>
                     DEALER
                 </Link>
-                <Link href='/contact' className='pt-2 hover:text-red-600'>
+                <Link href='/contact' className='pt-2 hover:text-red-600 cal-sans'>
                     CONTACT
                 </Link>
             </nav>
