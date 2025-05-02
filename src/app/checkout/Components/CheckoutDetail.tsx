@@ -167,6 +167,10 @@ export default function CheckoutDetail() {
                                     <span>₹13,990.00</span>
                                 </div>
                                 <div className="flex justify-between">
+                                    <span>Tax</span>
+                                    <span>₹500</span>
+                                </div>
+                                <div className="flex justify-between">
                                     <span>Shipping</span>
                                     <span>FREE</span>
                                 </div>

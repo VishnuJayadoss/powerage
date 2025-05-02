@@ -63,10 +63,10 @@ export default function ClientSays() {
 
     return (
         <>
-            <section className="bg-course">
+            <section className="bg-course lg:pt-[60px] lg:pb-[50px]">
                 <div className="mx-auto px-4 text-center container">
 
-                    <h2 className="pt-5 font-bold text-slate-800 text-3xl md:text-4xl">
+                    <h2 className="pt-6 font-bold text-slate-800 text-3xl md:text-4xl">
                         What Our Clients Say
                     </h2>
                 </div>

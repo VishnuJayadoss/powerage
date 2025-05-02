@@ -1,6 +1,6 @@
 export default function Video() {
     return (
-        <section className="w-full h-[60vh] overflow-hidden">
+        <section className="mt-4 w-full h-[60vh] overflow-hidden">
             <video
                 autoPlay
                 loop

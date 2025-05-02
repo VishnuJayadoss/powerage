@@ -77,16 +77,16 @@ export default function RelatedProduct() {
             >
                 {products.map((product, index) => (
                     <SwiperSlide key={index}>
-                        <div className="bg-[#e6e2e2] p-4 rounded h-[320px] hover:-translate-y-2 duration-300">
+                        <div className="p-4 h-[320px] hover:-translate-y-2 duration-300">
                             <div className="seller-card-img">
                                 <Image src={product.image} alt="product" width={350} height={250} />
                             </div>
-                            <div className="text-center seller-content">
-                                <div className="pb-2 card-title">
-                                    <h3>{product.title}</h3>
-                                </div>
-                                <div className="pb-2 vendor">
+                            <div className="seller-content">
+                                <div className="pt-2 pb-2 vendor">
                                     <p className="text-[12px] text-gray-400 uppercase">{product.vendor}</p>
+                                </div>
+                                <div className="pb-2 card-title">
+                                    <h3 className="cal-sans">{product.title}</h3>
                                 </div>
                                 <div className="price">
                                     <p>{product.price}</p>

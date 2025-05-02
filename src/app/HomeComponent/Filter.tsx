@@ -112,7 +112,7 @@ function Dropdown({
     placeholder: string;
 }) {
     return (
-        <div className="relative min-w-[220px] text-white">
+        <div className="relative pb-2 min-w-[300px] text-white">
             <div
                 className="flex items-center gap-2 px-4 py-2 border border-white rounded-full cursor-pointer"
                 onClick={() => setOpen(!open)}

@@ -73,7 +73,7 @@ export default function Desktop() {
                             </div>
                         )}
                     </div>
-                    <Link href='#' className='relative'>
+                    <Link href='/cart' className='relative'>
                         <ShoppingCart className='hover:text-red-600' />
                         <span className='-top-1 -right-2 absolute bg-gray-700 px-1.5 rounded-full text-white text-xs'>
                             1
@@ -137,7 +137,7 @@ export default function Desktop() {
 
 
 
-            <nav className='hidden relative md:flex justify-center gap-[100px] border-gray-200 border-t font-black text-md'>
+            <nav className='hidden relative md:flex justify-center md:gap-[80px] lg:gap-[200px] border-gray-200 border-t font-black text-sm main-menu'>
                 <Link href='/' className='pt-2 hover:text-red-600 cal-sans'>
                     HOME
                 </Link>
@@ -147,11 +147,11 @@ export default function Desktop() {
                     <button
                         className="peer flex items-center hover:text-red-600 cal-sans"
                     >
-                        PRODUCT <ChevronDown size={16} className="ml-1" />
+                        PRODUCTS <ChevronDown size={16} className="ml-1" />
                     </button>
 
                     {/* Dropdown */}
-                    <div className="invisible hover:visible peer-hover:visible right-0 left-[-430px] z-50 absolute bg-[#f5f5f5] opacity-0 hover:opacity-100 peer-hover:opacity-100 shadow-xl mt-4 px-8 py-6 rounded-md lg:w-[1300px] h-40 text-sm transition-all duration-300 dropdown-menu-product">
+                    <div className="invisible hover:visible peer-hover:visible right-0 left-[-320px] z-50 absolute bg-[#f5f5f5] opacity-0 hover:opacity-100 peer-hover:opacity-100 shadow-xl mt-4 px-8 py-6 rounded-md lg:w-[1300px] h-40 text-sm transition-all duration-300 dropdown-menu-product">
                         <div className="flex gap-8 mx-auto w-full">
 
                             {/* Left: Store message */}

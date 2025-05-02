@@ -31,9 +31,9 @@ export default function BestSeller() {
 
     return (
         <>
-            <div className="bg-seller p-6 lg:pt-[20px] lg:pr-[70px] lg:pb-[30px] lg:pl-[70px]">
+            <div className="bg-seller p-6 lg:pt-[60px] lg:pr-[70px] lg:pb-[60px] lg:pl-[70px]">
                 <div className="pb-[20px] text-center">
-                    <h3 className="inline-block mb-3 px-6 py-2 border-[3px] border-red-600 font-black text-[20px] uppercase">
+                    <h3 className="inline-block mb-3 px-4 py-1 border-[3px] border-red-600 font-black text-[20px] uppercase">
                         Best Seller
                     </h3>
                 </div>

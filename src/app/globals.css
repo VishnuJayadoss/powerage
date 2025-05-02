@@ -48,6 +48,10 @@ body {
     width: 900px;
     left: -250px;
   }
+
+  .main-menu {
+    gap: 120px;
+  }
 }
 
 @media (min-width: 1200px) and (max-width: 1300px) {

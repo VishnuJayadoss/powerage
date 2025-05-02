@@ -43,20 +43,21 @@ export default function Product() {
             </div>
             <div className="bg-seller p-6 lg:pt-[40px] lg:pr-[70px] lg:pb-[40px] lg:pl-[70px]">
 
-                <div className="gap-2 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
+                <div className="gap-2 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
                     {products.map((product, index) => (
                         <Link href={product.slug} key={index}>
-                            <div className="bg-[#e6e2e2] p-4 rounded hover:-translate-y-2 duration-300 seller-card">
+                            <div className="p-4 hover:-translate-y-2 duration-300 seller-card">
                                 <div className="seller-card-img">
                                     <Image src={product.img} alt={product.title} width={350} height={250} />
                                 </div>
-                                <div className="pt-2 text-center seller-content">
-                                    <div className="pb-2 card-title">
-                                        <h3>{product.title}</h3>
-                                    </div>
-                                    <div className="pb-2 vendor">
+                                <div className="pt-2 seller-content">
+                                <div className="pb-2 vendor">
                                         <p className="text-[12px] text-gray-400 uppercase">{product.vendor}</p>
                                     </div>
+                                    <div className="pb-2 card-title">
+                                        <h3 className="cal-sans">{product.title}</h3>
+                                    </div>
+                                    
                                     <div className="price">
                                         <p>{product.price}</p>
                                     </div>

@@ -4,15 +4,15 @@ import { FaChevronRight } from "react-icons/fa";
 
 export default function NewlyLaunched() {
     return (
-        <section className="px-8 py-8">
+        <section className="px-8 py-8 lg:py-20">
             <div className="gap-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
                 {/* Card 1 */}
                 <div>
-                    <p className="text-red-600">Shop</p>
-                    <h3 className="pb-3 font-black text-[40px] leading-[40px]">
+                    <p className="text-red-600 uppercase">Shop</p>
+                    <h3 className="pb-3 font-black text-[40px] uppercase leading-[40px]">
                         Newly<br />Launched
                     </h3>
-                    <div className="group relative rounded h-[400px] overflow-hidden">
+                    <div className="group relative h-[400px] overflow-hidden">
                         <Image
                             src="/home/banner.webp"
                             alt="category"
@@ -35,7 +35,7 @@ export default function NewlyLaunched() {
 
                 {/* Card 2 */}
                 <div>
-                    <div className="group relative mt-[30px] rounded h-[400px] overflow-hidden">
+                    <div className="group relative mt-[30px] h-[400px] overflow-hidden">
                         <Image
                             src="/home/banner.webp"
                             alt="category"
@@ -61,7 +61,7 @@ export default function NewlyLaunched() {
 
                 {/* Card 3 */}
                 <div>
-                    <div className="group relative mt-[100px] rounded h-[400px] overflow-hidden">
+                    <div className="group relative mt-[100px] h-[400px] overflow-hidden">
                         <Image
                             src="/home/banner.webp"
                             alt="category"

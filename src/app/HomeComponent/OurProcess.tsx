@@ -22,18 +22,18 @@ export default function OurProcess() {
 
     return (
         <>
-            <div className="bg-process p-4 lg:pr-[70px] lg:pl-[70px]">
-                <h2 className="pb-4 font-extrabold text-[30px] uppercase">Our Process</h2>
+            <div className="bg-process p-4 lg:pt-[60px] lg:pr-[70px] lg:pb-[60px] lg:pl-[70px]">
+                <h2 className="pb-5 font-extrabold text-[30px] uppercase">Our Process</h2>
 
-                <div className="gap-4 grid grid-cols-1 md:grid-cols-1 lg:grid-cols-3">
+                <div className="gap-6 grid grid-cols-1 md:grid-cols-1 lg:grid-cols-3">
                     {process.map((processes, index) => (
                         <div className="process-card" key={index}>
                             <div className="process-img">
                                 <Image src={processes.img} alt="process" width={1000} height={1000} className="pb-3 w-full h-[300px]" />
                             </div>
                             <div className="p-3 process-content">
-                                <h3 className="pb-2 font-extrabold text-[25px]">{processes.title}</h3>
-                                <p className="text-gray-600 text-justify">{processes.description}</p>
+                                <h3 className="pb-2 font-extrabold text-[25px] uppercase">{processes.title}</h3>
+                                <p className="text-gray-500 text-justify">{processes.description}</p>
                             </div>
                         </div>
                     ))}

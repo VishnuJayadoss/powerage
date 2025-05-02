@@ -41,7 +41,7 @@ export default function Detail() {
                                     alt="Selected Product Image" 
                                     width={1000} 
                                     height={1000} 
-                                    className="rounded w-full object-cover"
+                                    className="w-full object-cover"
                                 />
                             </div>
 
@@ -60,7 +60,7 @@ export default function Detail() {
                                                     alt={`Thumbnail ${index}`} 
                                                     width={100} 
                                                     height={100} 
-                                                    className={`rounded border ${selectedImage === img ? 'border-red-500' : 'border-transparent'}`} 
+                                                    className={` border ${selectedImage === img ? 'border-red-500' : 'border-transparent'}`} 
                                                 />
                                             </button>
                                         </SwiperSlide>
@@ -116,8 +116,8 @@ export default function Detail() {
                         </div>
 
                         <div className="flex flex-col gap-2">
-                            <Link href="#3" className="py-3 border border-red-600 rounded text-center">Add to Cart</Link>
-                            <Link href="#3" className="bg-red-600 py-3 rounded text-center">Buy it Now</Link>
+                            <Link href="/cart" className="py-3 border border-red-600 rounded text-center">Add to Cart</Link>
+                            <Link href="/checkout" className="bg-red-600 py-3 rounded text-center">Buy it Now</Link>
                         </div>
                     </div>
                 </div>

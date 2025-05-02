@@ -83,7 +83,7 @@ export default function CartDetail() {
                     Taxes, discounts, and <Link href="#" className="text-red-600 underline">shipping</Link> calculated at checkout.
                 </p>
 
-                <Link href="#" className="inline-block bg-red-600 hover:bg-red-700 px-20 py-3 rounded font-medium text-white text-sm">
+                <Link href="/checkout" className="inline-block bg-red-600 hover:bg-red-700 px-20 py-3 rounded font-medium text-white text-sm">
                     Checkout
                 </Link>
             </div>

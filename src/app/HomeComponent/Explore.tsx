@@ -94,13 +94,13 @@ export default function Explore() {
                             breakpoints={{
                                 640: { slidesPerView: 1 },
                                 768: { slidesPerView: 2 },
-                                1024: { slidesPerView: 2 },
+                                1024: { slidesPerView: 3 },
                             }}
                             modules={[Navigation]}
                         >
                             {bikes.map((bike, index) => (
                                 <SwiperSlide key={index}>
-                                    <div className="relative rounded-xl overflow-hidden">
+                                    <div className="relative overflow-hidden">
                                         <Image
                                             src={bike.image}
                                             alt={bike.model}

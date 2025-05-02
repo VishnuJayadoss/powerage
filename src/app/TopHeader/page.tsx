@@ -17,7 +17,7 @@ export default function TopHeader() {
             <div className="flex justify-between items-center">
                 {/* Left text */}
                 <div className="hidden md:block text-white">
-                    <p><span className="font-semibold cal-sans">Worldwide</span> Shipping</p>
+                    <p><span className="font-black">Worldwide</span> Shipping</p>
                 </div>
 
                 {/* Center image and text */}
@@ -32,10 +32,10 @@ export default function TopHeader() {
                     <div className="relative w-20 lg:w-15">
                         <button
                             onClick={() => setIsCurrencyOpen(!isCurrencyOpen)}
-                            className="flex items-center gap-2 bg-black py-2 pl-2 focus:outline-none w-full text-left"
+                            className="flex items-center gap-1 bg-black pl-2 lg:pl-6 focus:outline-none w-full text-[12px] text-left"
                         >
                             <span>{selectedCurrency}</span>
-                            <ChevronDown size={18} />
+                            <ChevronDown size={14} />
                         </button>
 
                         {isCurrencyOpen && (
@@ -60,10 +60,10 @@ export default function TopHeader() {
                     <div className="relative w-24 md:w-32">
                         <button
                             onClick={() => setIsLangOpen(!isLangOpen)}
-                            className="flex items-center gap-2 bg-black py-2 pl-2 focus:outline-none w-full text-left"
+                            className="flex items-center gap-1 bg-black pl-2 focus:outline-none w-full text-[12px] text-left"
                         >
                             <span>{selectedLang}</span>
-                            <ChevronDown size={18} />
+                            <ChevronDown size={14} />
                         </button>
 
                         {isLangOpen && (
