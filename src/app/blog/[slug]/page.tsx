@@ -13,19 +13,24 @@ async function getBlogData(slug: string) {
 
         const json = await res.json();
 
-        // Ensure blog exists and data is an array with at least one blog
         if (!json?.data || !Array.isArray(json.data) || json.data.length === 0) {
             return null;
         }
 
-        return json.data[0]; // Return the first blog object
+        return json.data[0];
     } catch (error) {
         console.error('Error fetching blog:', error);
         return null;
     }
 }
 
-export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
+type Props = {
+    params: {
+        slug: string;
+    };
+};
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
     const blog = await getBlogData(params.slug);
 
     if (!blog) {
@@ -47,7 +52,7 @@ export async function generateMetadata({ params }: { params: { slug: string } })
     };
 }
 
-export default async function BlogDetailPage({ params }: { params: { slug: string } }) {
+export default async function BlogDetailPage({ params }: Props) {
     const blog = await getBlogData(params.slug);
 
     if (!blog) return notFound();
