@@ -39,10 +39,10 @@ export async function generateMetadata(
   return {
     title: blog.meta_title || 'Powerage | Blog',
     description: blog.meta_desc || 'Powerage | Blog',
-    keywords: blog.meta_keyword || '',
+    keywords: blog.meta_keyword || 'Powerage | Blog',
     openGraph: {
       title: blog.og_title || blog.meta_title || blog.title,
-      description: blog.og_desc || blog.meta_desc || '',
+      description: blog.og_desc || blog.meta_desc || 'Powerage | Blog',
       images: blog.og_image ? [blog.og_image] : [],
     },
   };
