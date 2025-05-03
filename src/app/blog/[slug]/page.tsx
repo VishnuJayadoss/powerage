@@ -1,61 +1,45 @@
-import './Components/style.css';
-import Detail from './Components/Detail';
+'use client';
+
+import { useEffect, useState } from 'react';
+import { useParams } from 'next/navigation';
 import { notFound } from 'next/navigation';
-import type { Metadata } from 'next';
+import Detail from './Components/Detail';
 
-async function getBlogData(slug: string) {
-    try {
-        const res = await fetch(`https://saddlebrown-stingray-368718.hostingersite.com/api/blog/${slug}`, {
-            cache: 'no-store',
-        });
+export default function BlogDetailPage() {
+    const { slug } = useParams() as { slug: string };
+    const [blog, setBlog] = useState<any>(null);
+    const [error, setError] = useState(false);
 
-        if (!res.ok) return null;
+    useEffect(() => {
+        async function fetchBlogData() {
+            try {
+                const res = await fetch(`https://saddlebrown-stingray-368718.hostingersite.com/api/blog/${slug}`, {
+                    cache: 'no-store',
+                });
 
-        const json = await res.json();
+                if (!res.ok) {
+                    setError(true);
+                    return;
+                }
 
-        if (!json?.data || !Array.isArray(json.data) || json.data.length === 0) {
-            return null;
+                const json = await res.json();
+                if (!json?.data || !Array.isArray(json.data) || json.data.length === 0) {
+                    setError(true);
+                    return;
+                }
+
+                setBlog(json.data[0]);
+            } catch (err) {
+                console.error('Error fetching blog:', err);
+                setError(true);
+            }
         }
 
-        return json.data[0];
-    } catch (error) {
-        console.error('Error fetching blog:', error);
-        return null;
-    }
-}
+        fetchBlogData();
+    }, [slug]);
 
-// ✅ INLINE the params typing directly — DO NOT use a custom Props alias
-export async function generateMetadata(
-  { params }: { params: { slug: string } }
-): Promise<Metadata> {
-    const blog = await getBlogData(params.slug);
-
-    if (!blog) {
-        return {
-            title: 'Blog Not Found',
-            description: 'The requested blog post does not exist.',
-        };
-    }
-
-    return {
-        title: blog.meta_title || 'Powerage | Blog',
-        description: blog.meta_desc || 'Powerage | Blog',
-        keywords: blog.meta_keyword || 'Powerage | Blog',
-        openGraph: {
-            title: blog.og_title || blog.title,
-            description: blog.og_desc || 'Powerage | Blog',
-            images: blog.og_image ? [blog.og_image] : [],
-        },
-    };
-}
-
-// ✅ Also inline params typing here
-export default async function BlogDetailPage(
-  { params }: { params: { slug: string } }
-) {
-    const blog = await getBlogData(params.slug);
-
-    if (!blog) return notFound();
+    if (error) return notFound();
+    if (!blog) return <p>Loading...</p>;
 
     return <Detail blog={blog} />;
 }
