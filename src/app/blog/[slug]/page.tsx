@@ -24,13 +24,9 @@ async function getBlogData(slug: string) {
     }
 }
 
-type Params = {
-    params: {
-        slug: string;
-    };
-};
-
-export async function generateMetadata({ params }: Params): Promise<Metadata> {
+export async function generateMetadata(
+    { params }: { params: { slug: string } }
+): Promise<Metadata> {
     const blog = await getBlogData(params.slug);
 
     if (!blog) {
@@ -45,14 +41,16 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
         description: blog.meta_desc || 'Powerage | Blog',
         keywords: blog.meta_keyword || 'Powerage | Blog',
         openGraph: {
-            title: blog.og_title || blog.meta_title || blog.title,
-            description: blog.og_desc || blog.meta_desc || 'Powerage | Blog',
+            title: blog.og_title || blog.title,
+            description: blog.og_desc || 'Powerage | Blog',
             images: blog.og_image ? [blog.og_image] : [],
         },
     };
 }
 
-export default async function BlogDetailPage({ params }: Params) {
+export default async function BlogDetailPage(
+    { params }: { params: { slug: string } }
+) {
     const blog = await getBlogData(params.slug);
 
     if (!blog) return notFound();
