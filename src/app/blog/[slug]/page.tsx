@@ -24,8 +24,9 @@ async function getBlogData(slug: string) {
     }
 }
 
+// ✅ INLINE the params typing directly — DO NOT use a custom Props alias
 export async function generateMetadata(
-    { params }: { params: { slug: string } }
+  { params }: { params: { slug: string } }
 ): Promise<Metadata> {
     const blog = await getBlogData(params.slug);
 
@@ -48,8 +49,9 @@ export async function generateMetadata(
     };
 }
 
+// ✅ Also inline params typing here
 export default async function BlogDetailPage(
-    { params }: { params: { slug: string } }
+  { params }: { params: { slug: string } }
 ) {
     const blog = await getBlogData(params.slug);
 
