@@ -1,3 +1,5 @@
+// src/app/blog/[slug]/page.tsx
+
 import './Components/style.css';
 import Detail from './Components/Detail';
 import { notFound } from 'next/navigation';
@@ -24,13 +26,13 @@ async function getBlogData(slug: string) {
     }
 }
 
-type Props = {
+type PageProps = {
     params: {
         slug: string;
     };
 };
 
-export async function generateMetadata({ params }: Props): Promise<Metadata> {
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
     const blog = await getBlogData(params.slug);
 
     if (!blog) {
@@ -52,7 +54,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     };
 }
 
-export default async function BlogDetailPage({ params }: Props) {
+export default async function BlogDetailPage({ params }: PageProps) {
     const blog = await getBlogData(params.slug);
 
     if (!blog) return notFound();
