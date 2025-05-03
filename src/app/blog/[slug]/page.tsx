@@ -1,85 +1,74 @@
-'use client';
-
-import { useEffect, useState } from 'react';
-import { useParams } from 'next/navigation';
-import { notFound } from 'next/navigation';
-import Head from 'next/head'; // ✅ import Head
-import Detail from './Components/Detail';
+import { Metadata, ResolvingMetadata } from 'next';
+import BlogDetailClient from './client';
 
 type Blog = {
-    blog_banner_img: string;
-    blog_banner_img_alt: string;
-    blog_banner_title: string;
-    blog_banner_desc: string;
-    blog_user: string;
-    blog_name: string;
-    blog_desc: string;
-    blog_main_img: string;
-    blog_main_img_alt: string;
-    created_at: string;
-    meta_title?: string;
-    meta_desc?: string;
-    meta_keyword?: string;
-    og_title?: string;
-    og_desc?: string;
-    og_image?: string;
+  meta_title?: string;
+  meta_desc?: string;
+  meta_keyword?: string;
+  og_title?: string;
+  og_desc?: string;
+  og_image?: string;
+  blog_banner_title: string;
+  blog_banner_desc: string;
+  blog_main_img?: string;
 };
 
-export default function BlogDetailPage() {
-    const { slug } = useParams() as { slug: string };
-    const [blog, setBlog] = useState<Blog | null>(null);
-    const [error, setError] = useState(false);
+type Props = {
+  params: {
+    slug: string;
+  };
+};
 
-    useEffect(() => {
-        async function fetchBlogData() {
-            try {
-                const res = await fetch(`https://saddlebrown-stingray-368718.hostingersite.com/api/blog/${slug}`, {
-                    cache: 'no-store',
-                });
+async function fetchBlog(slug: string) {
+  const res = await fetch(`https://saddlebrown-stingray-368718.hostingersite.com/api/blog/${slug}`, {
+    next: { revalidate: 3600 }, // Cache for 1 hour
+  });
 
-                if (!res.ok) {
-                    setError(true);
-                    return;
-                }
+  if (!res.ok) throw new Error('Failed to fetch blog');
+  return res.json();
+}
 
-                const json = await res.json();
-                if (!json?.data || !Array.isArray(json.data) || json.data.length === 0) {
-                    setError(true);
-                    return;
-                }
+export async function generateMetadata(
+  { params }: Props,
+  parent: ResolvingMetadata
+): Promise<Metadata> {
+  try {
+    const json = await fetchBlog(params.slug);
+    if (!json?.data?.[0]) throw new Error('Blog not found');
 
-                setBlog(json.data[0]);
-            } catch (err) {
-                console.error('Error fetching blog:', err);
-                setError(true);
-            }
-        }
+    const blog: Blog = json.data[0];
+    const previousImages = (await parent).openGraph?.images || [];
 
-        fetchBlogData();
-    }, [slug]);
+    return {
+      title: blog.meta_title || blog.blog_banner_title || 'Blog Detail',
+      description: blog.meta_desc || blog.blog_banner_desc || '',
+      keywords: blog.meta_keyword,
+      openGraph: {
+        title: blog.og_title || blog.meta_title || blog.blog_banner_title,
+        description: blog.og_desc || blog.meta_desc || blog.blog_banner_desc,
+        images: [
+          ...(blog.og_image ? [blog.og_image] : []),
+          ...(blog.blog_main_img ? [blog.blog_main_img] : []),
+          ...previousImages,
+        ],
+        type: 'article',
+      },
+      twitter: {
+        card: 'summary_large_image',
+        title: blog.og_title || blog.meta_title || blog.blog_banner_title,
+        description: blog.og_desc || blog.meta_desc || blog.blog_banner_desc,
+        images: blog.og_image || blog.blog_main_img,
+      },
+    };
+  } catch (error) {
+    console.error('Error generating metadata:', error);
+    return {
+      title: 'Blog',
+      description: 'Read our latest blog posts',
+    };
+  }
+}
 
-    if (error) return notFound();
-    if (!blog) return <p>Loading...</p>;
-
-    return (
-        <>
-            {/* ✅ Dynamic Metadata using next/head */}
-            <Head>
-                <title>{blog.meta_title || 'Powerage | Blog'}</title>
-                <meta name="description" content={blog.meta_desc || 'Powerage | Blog'} />
-                <meta name="keywords" content={blog.meta_keyword || 'Powerage, Blog'} />
-
-                {/* Open Graph / Social Meta */}
-                <meta property="og:title" content={blog.og_title || blog.blog_name} />
-                <meta property="og:description" content={blog.og_desc || blog.meta_desc || ''} />
-                {blog.og_image && (
-                    <meta property="og:image" content={blog.og_image} />
-                )}
-                <meta property="og:url" content={typeof window !== 'undefined' ? window.location.href : ''} />
-                <meta property="og:type" content="article" />
-            </Head>
-
-            <Detail blog={blog} />
-        </>
-    );
+export default function BlogDetailPage({ params }: Props) {
+  return <BlogDetailClient slug={params.slug} />;
 }
