@@ -5,9 +5,29 @@ import { useParams } from 'next/navigation';
 import { notFound } from 'next/navigation';
 import Detail from './Components/Detail';
 
+// ✅ Define a proper Blog type
+type Blog = {
+    blog_banner_img: string;
+    blog_banner_img_alt: string;
+    blog_banner_title: string;
+    blog_banner_desc: string;
+    blog_user: string;
+    blog_name: string;
+    blog_desc: string;
+    blog_main_img: string;
+    blog_main_img_alt: string;
+    created_at: string;
+    meta_title?: string;
+    meta_desc?: string;
+    meta_keyword?: string;
+    og_title?: string;
+    og_desc?: string;
+    og_image?: string;
+};
+
 export default function BlogDetailPage() {
     const { slug } = useParams() as { slug: string };
-    const [blog, setBlog] = useState<any>(null);
+    const [blog, setBlog] = useState<Blog | null>(null);
     const [error, setError] = useState(false);
 
     useEffect(() => {
