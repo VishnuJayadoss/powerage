@@ -3,9 +3,9 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'next/navigation';
 import { notFound } from 'next/navigation';
+import Head from 'next/head'; // ✅ import Head
 import Detail from './Components/Detail';
 
-// ✅ Define a proper Blog type
 type Blog = {
     blog_banner_img: string;
     blog_banner_img_alt: string;
@@ -61,5 +61,25 @@ export default function BlogDetailPage() {
     if (error) return notFound();
     if (!blog) return <p>Loading...</p>;
 
-    return <Detail blog={blog} />;
+    return (
+        <>
+            {/* ✅ Dynamic Metadata using next/head */}
+            <Head>
+                <title>{blog.meta_title || 'Powerage | Blog'}</title>
+                <meta name="description" content={blog.meta_desc || 'Powerage | Blog'} />
+                <meta name="keywords" content={blog.meta_keyword || 'Powerage, Blog'} />
+
+                {/* Open Graph / Social Meta */}
+                <meta property="og:title" content={blog.og_title || blog.blog_name} />
+                <meta property="og:description" content={blog.og_desc || blog.meta_desc || ''} />
+                {blog.og_image && (
+                    <meta property="og:image" content={blog.og_image} />
+                )}
+                <meta property="og:url" content={typeof window !== 'undefined' ? window.location.href : ''} />
+                <meta property="og:type" content="article" />
+            </Head>
+
+            <Detail blog={blog} />
+        </>
+    );
 }
