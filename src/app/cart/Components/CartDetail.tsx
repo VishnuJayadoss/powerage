@@ -20,7 +20,7 @@ export default function CartDetail() {
             {/* Heading */}
             <div className="flex justify-between items-center">
                 <h2 className="font-semibold text-2xl md:text-3xl">Your cart</h2>
-                <a href="#" className="text-red-500 text-sm hover:underline whitespace-nowrap">Continue shopping</a>
+                <Link href="#" className="text-red-500 text-sm hover:underline whitespace-nowrap">Continue shopping</Link>
             </div>
 
             {/* Table Header */}
@@ -34,7 +34,7 @@ export default function CartDetail() {
             <div className="items-center gap-4 grid grid-cols-1 lg:grid-cols-12 py-6 border-gray-300 border-b">
                 {/* Product Info */}
                 <div className="flex items-center gap-4 col-span-6">
-                    <Image src="/home/product.webp" alt="Product" width={80} height={80} className="rounded w-20 h-20 object-cover" />
+                    <Image src="/home/product.webp" alt="Product" width={80} height={80} className="w-20 h-20 object-cover" />
                     <div>
                         <p className="text-[10px] text-gray-400 uppercase">Powerage</p>
                         <h3 className="font-medium text-sm md:text-base">Slip-Ons Exhaust for RE HIMALAYAN 450</h3>

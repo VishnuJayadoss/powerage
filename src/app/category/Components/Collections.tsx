@@ -24,12 +24,11 @@ export default function Collections() {
                                 {/* Overlay Content */}
                                 <div className="z-10 absolute inset-0 flex flex-col justify-start bg-black/50 p-4 pl-[30px] h-[130px] text-white">
                                     <h3 className="pb-4 font-bold text-[26px]">{category.title}</h3>
-                                    <Link
-                                        href={`/${category.slug}`}
+                                    <div
                                         className="inline-block bg-red-600 px-5 py-1 rounded-full w-[70px] text-white text-sm"
                                     >
                                         More
-                                    </Link>
+                                    </div>
                                 </div>
 
                                 {/* Image */}

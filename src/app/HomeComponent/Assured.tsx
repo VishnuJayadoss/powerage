@@ -31,7 +31,7 @@ export default function Assured() {
                             Lifetime repair service on all products we<br /> manufacture in-house.
                         </p>
                     </div>
-                </div> 
+                </div>
             </section>
 
         </>
