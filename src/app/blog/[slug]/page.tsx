@@ -2,12 +2,6 @@ import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import Detail from './Components/Detail';
 
-type BlogPageProps = {
-  params: {
-    slug: string;
-  };
-};
-
 type BlogData = {
   meta_title: string;
   meta_desc: string;
@@ -19,8 +13,7 @@ type BlogData = {
   blog_desc2: string;
 };
 
-// ✅ No more name conflict here
-export async function generateMetadata({ params }: BlogPageProps): Promise<Metadata> {
+export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
   const res = await fetch(`https://saddlebrown-stingray-368718.hostingersite.com/api/blog/${params.slug}`);
   const json = await res.json();
 
@@ -39,8 +32,7 @@ export async function generateMetadata({ params }: BlogPageProps): Promise<Metad
   };
 }
 
-// ✅ And here too
-export default async function Blogdetail({ params }: BlogPageProps) {
+export default async function Blogdetail({ params }: { params: { slug: string } }) {
   const res = await fetch(`https://saddlebrown-stingray-368718.hostingersite.com/api/blog/${params.slug}`, {
     cache: 'no-store',
   });
