@@ -1,5 +1,3 @@
-// src/app/blog/[slug]/page.tsx
-
 import { Metadata, ResolvingMetadata } from 'next';
 import Detail from './Components/Detail';
 
@@ -22,15 +20,6 @@ type Blog = {
   created_at: string;
 };
 
-type PageProps = {
-  params: {
-    slug: string;
-  };
-  searchParams?: {
-    [key: string]: string | string[] | undefined;
-  };
-};
-
 async function fetchBlog(slug: string) {
   const res = await fetch(`https://saddlebrown-stingray-368718.hostingersite.com/api/blog/${slug}`, {
     next: { revalidate: 3600 },
@@ -40,8 +29,9 @@ async function fetchBlog(slug: string) {
   return res.json();
 }
 
+// ✅ Let Next.js infer the correct prop types
 export async function generateMetadata(
-  { params }: PageProps,
+  { params }: { params: { slug: string } },
   parent: ResolvingMetadata
 ): Promise<Metadata> {
   try {
@@ -81,7 +71,8 @@ export async function generateMetadata(
   }
 }
 
-export default async function BlogDetailPage({ params }: PageProps) {
+// ✅ Let Next.js infer this as well
+export default async function BlogDetailPage({ params }: { params: { slug: string } }) {
   const json = await fetchBlog(params.slug);
   const blog: Blog = json.data?.[0];
 
