@@ -22,9 +22,12 @@ type Blog = {
   created_at: string;
 };
 
-type Props = {
+type PageProps = {
   params: {
     slug: string;
+  };
+  searchParams?: {
+    [key: string]: string | string[] | undefined;
   };
 };
 
@@ -38,7 +41,7 @@ async function fetchBlog(slug: string) {
 }
 
 export async function generateMetadata(
-  { params }: Props,
+  { params }: PageProps,
   parent: ResolvingMetadata
 ): Promise<Metadata> {
   try {
@@ -78,7 +81,7 @@ export async function generateMetadata(
   }
 }
 
-export default async function BlogDetailPage({ params }: Props) {
+export default async function BlogDetailPage({ params }: PageProps) {
   const json = await fetchBlog(params.slug);
   const blog: Blog = json.data?.[0];
 
