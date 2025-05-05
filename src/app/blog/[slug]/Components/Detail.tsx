@@ -4,6 +4,7 @@ import { format } from 'date-fns';
 import Image from 'next/image';
 import { Share2 } from 'lucide-react';
 import { toast } from 'sonner';
+import parse from 'html-react-parser';
 
 type Blog = {
     blog_banner_img: string;
@@ -95,10 +96,9 @@ export default function Detail({ blog }: BlogProps) {
                 </div>
             )}
 
-            <div
-                className="dark:prose-invert max-w-none prose prose-lg"
-                dangerouslySetInnerHTML={{ __html: blog.blog_desc }}
-            />
+            <div className="space-y-4 text-muted-foreground text-base leading-relaxed">
+                {parse(blog.blog_desc)}
+            </div>
         </article>
     );
 }

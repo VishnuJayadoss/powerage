@@ -29,7 +29,6 @@ async function fetchBlog(slug: string) {
   return res.json();
 }
 
-// ✅ Let Next.js infer the correct prop types
 export async function generateMetadata(
   { params }: { params: { slug: string } },
   parent: ResolvingMetadata
@@ -71,7 +70,6 @@ export async function generateMetadata(
   }
 }
 
-// ✅ Let Next.js infer this as well
 export default async function BlogDetailPage({ params }: { params: { slug: string } }) {
   const json = await fetchBlog(params.slug);
   const blog: Blog = json.data?.[0];
