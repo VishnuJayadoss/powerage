@@ -1,82 +1,49 @@
-import { Metadata, ResolvingMetadata } from 'next';
+import { notFound } from 'next/navigation';
 import Detail from './Components/Detail';
+import type { Metadata } from 'next';
 
-type Blog = {
-  meta_title?: string;
-  meta_desc?: string;
-  meta_keyword?: string;
-  og_title?: string;
-  og_desc?: string;
-  og_image?: string;
-  blog_banner_img: string;
-  blog_banner_img_alt: string;
-  blog_banner_title: string;
-  blog_banner_desc: string;
-  blog_user: string;
-  blog_name: string;
-  blog_desc: string;
-  blog_main_img?: string;
-  blog_main_img_alt?: string;
-  created_at: string;
+type BlogData = {
+    meta_title: string;
+    meta_desc: string;
+    blog_name: string;
+    created_at: string;
+    blog_banner_img: string;
+    blog_banner_title: string;
+    blog_desc: string;
+    blog_desc2: string;
 };
 
-async function fetchBlog(slug: string) {
-  const res = await fetch(`https://saddlebrown-stingray-368718.hostingersite.com/api/blog/${slug}`, {
-    next: { revalidate: 3600 },
-  });
+export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
+    const res = await fetch(`https://saddlebrown-stingray-368718.hostingersite.com/api/blog/${params.slug}`);
+    const json = await res.json();
 
-  if (!res.ok) throw new Error('Failed to fetch blog');
-  return res.json();
-}
+    if (!json.data || json.data.length === 0) {
+        return {
+            title: 'Powerage | Blog',
+            description: 'Blog not found',
+        };
+    }
 
-export async function generateMetadata(
-  { params }: { params: { slug: string } },
-  parent: ResolvingMetadata
-): Promise<Metadata> {
-  try {
-    const json = await fetchBlog(params.slug);
-    const blog: Blog = json.data?.[0];
-    if (!blog) throw new Error('Blog not found');
-
-    const previousImages = (await parent).openGraph?.images || [];
+    const blog: BlogData = json.data[0];
 
     return {
-      title: blog.meta_title || blog.blog_banner_title || 'Blog Detail',
-      description: blog.meta_desc || blog.blog_banner_desc || '',
-      keywords: blog.meta_keyword,
-      openGraph: {
-        title: blog.og_title || blog.meta_title || blog.blog_banner_title,
-        description: blog.og_desc || blog.meta_desc || blog.blog_banner_desc,
-        images: [
-          ...(blog.og_image ? [blog.og_image] : []),
-          ...(blog.blog_main_img ? [blog.blog_main_img] : []),
-          ...previousImages,
-        ],
-        type: 'article',
-      },
-      twitter: {
-        card: 'summary_large_image',
-        title: blog.og_title || blog.meta_title || blog.blog_banner_title,
-        description: blog.og_desc || blog.meta_desc || blog.blog_banner_desc,
-        images: blog.og_image || blog.blog_main_img || '',
-      },
+        title: blog.meta_title,
+        description: blog.meta_desc,
     };
-  } catch (error) {
-    console.error('Error generating metadata:', error);
-    return {
-      title: 'Blog',
-      description: 'Read our latest blog posts',
-    };
-  }
 }
 
-export default async function BlogDetailPage({ params }: { params: { slug: string } }) {
-  const json = await fetchBlog(params.slug);
-  const blog: Blog = json.data?.[0];
+export default async function Blogdetail({ params }: { params: { slug: string } }) {
+    const res = await fetch(`https://saddlebrown-stingray-368718.hostingersite.com/api/blog/${params.slug}`, {
+        cache: 'no-store', // disable caching for fresh data
+    });
 
-  if (!blog) {
-    return <div className="p-8 text-red-600 text-center">Blog not found.</div>;
-  }
+    const json = await res.json();
 
-  return <Detail blog={blog} />;
+    if (!json.data || json.data.length === 0) {
+        notFound();
+    }
+
+    const blog: BlogData = json.data[0];
+
+    return <Detail blog={blog} />;
 }
