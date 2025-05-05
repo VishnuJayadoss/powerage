@@ -2,8 +2,7 @@ import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import Detail from './Components/Detail';
 
-// Define the expected structure of `params`
-type PageProps = {
+type BlogPageProps = {
   params: {
     slug: string;
   };
@@ -20,8 +19,8 @@ type BlogData = {
   blog_desc2: string;
 };
 
-// Use correct type in generateMetadata
-export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+// ✅ No more name conflict here
+export async function generateMetadata({ params }: BlogPageProps): Promise<Metadata> {
   const res = await fetch(`https://saddlebrown-stingray-368718.hostingersite.com/api/blog/${params.slug}`);
   const json = await res.json();
 
@@ -40,8 +39,8 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   };
 }
 
-// Use correct type in page component
-export default async function Blogdetail({ params }: PageProps) {
+// ✅ And here too
+export default async function Blogdetail({ params }: BlogPageProps) {
   const res = await fetch(`https://saddlebrown-stingray-368718.hostingersite.com/api/blog/${params.slug}`, {
     cache: 'no-store',
   });
