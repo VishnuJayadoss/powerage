@@ -3,22 +3,23 @@
 import { format } from 'date-fns';
 import Image from 'next/image';
 import { Share2 } from 'lucide-react';
-import { Button } from '@/components/ui/button';
 import { toast } from 'sonner';
 
+type Blog = {
+    blog_banner_img: string;
+    blog_banner_img_alt: string;
+    blog_banner_title: string;
+    blog_banner_desc: string;
+    blog_user: string;
+    blog_name: string;
+    blog_desc: string;
+    blog_main_img?: string;
+    blog_main_img_alt?: string;
+    created_at: string;
+};
+
 type BlogProps = {
-    blog: {
-        blog_banner_img: string;
-        blog_banner_img_alt: string;
-        blog_banner_title: string;
-        blog_banner_desc: string;
-        blog_user: string;
-        blog_name: string;
-        blog_desc: string;
-        blog_main_img: string;
-        blog_main_img_alt: string;
-        created_at: string;
-    };
+    blog: Blog;
 };
 
 export default function Detail({ blog }: BlogProps) {
@@ -52,6 +53,7 @@ export default function Detail({ blog }: BlogProps) {
                         src={blog.blog_banner_img}
                         alt={blog.blog_banner_img_alt || 'Blog banner'}
                         fill
+                        sizes="(max-width: 768px) 100vw, 768px"
                         className="object-cover"
                         priority
                     />
@@ -61,14 +63,9 @@ export default function Detail({ blog }: BlogProps) {
             <header className="mb-10">
                 <div className="flex justify-between items-center gap-4 mb-6">
                     <h1 className="font-bold text-4xl tracking-tight">{blog.blog_banner_title}</h1>
-                    <Button
-                        variant="outline"
-                        size="icon"
-                        onClick={handleShare}
-                        className="shrink-0"
-                    >
-                        <Share2 className="w-4 h-4" />
-                    </Button>
+                    <button onClick={handleShare} className="shrink-0" aria-label="Share this blog">
+                        <Share2 className="w-5 h-5" />
+                    </button>
                 </div>
 
                 <p className="mb-6 text-muted-foreground text-xl">{blog.blog_banner_desc}</p>
@@ -91,6 +88,7 @@ export default function Detail({ blog }: BlogProps) {
                             src={blog.blog_main_img}
                             alt={blog.blog_main_img_alt || 'Blog main image'}
                             fill
+                            sizes="(max-width: 768px) 100vw, 768px"
                             className="object-cover"
                         />
                     </div>

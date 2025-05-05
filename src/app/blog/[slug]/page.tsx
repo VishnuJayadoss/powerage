@@ -1,5 +1,7 @@
+// src/app/blog/[slug]/page.tsx
+
 import { Metadata, ResolvingMetadata } from 'next';
-import BlogDetailClient from './client';
+import Detail from './Components/Detail';
 
 type Blog = {
   meta_title?: string;
@@ -8,9 +10,16 @@ type Blog = {
   og_title?: string;
   og_desc?: string;
   og_image?: string;
+  blog_banner_img: string;
+  blog_banner_img_alt: string;
   blog_banner_title: string;
   blog_banner_desc: string;
+  blog_user: string;
+  blog_name: string;
+  blog_desc: string;
   blog_main_img?: string;
+  blog_main_img_alt?: string;
+  created_at: string;
 };
 
 type Props = {
@@ -21,7 +30,7 @@ type Props = {
 
 async function fetchBlog(slug: string) {
   const res = await fetch(`https://saddlebrown-stingray-368718.hostingersite.com/api/blog/${slug}`, {
-    next: { revalidate: 3600 }, // Cache for 1 hour
+    next: { revalidate: 3600 },
   });
 
   if (!res.ok) throw new Error('Failed to fetch blog');
@@ -34,9 +43,9 @@ export async function generateMetadata(
 ): Promise<Metadata> {
   try {
     const json = await fetchBlog(params.slug);
-    if (!json?.data?.[0]) throw new Error('Blog not found');
+    const blog: Blog = json.data?.[0];
+    if (!blog) throw new Error('Blog not found');
 
-    const blog: Blog = json.data[0];
     const previousImages = (await parent).openGraph?.images || [];
 
     return {
@@ -57,7 +66,7 @@ export async function generateMetadata(
         card: 'summary_large_image',
         title: blog.og_title || blog.meta_title || blog.blog_banner_title,
         description: blog.og_desc || blog.meta_desc || blog.blog_banner_desc,
-        images: blog.og_image || blog.blog_main_img,
+        images: blog.og_image || blog.blog_main_img || '',
       },
     };
   } catch (error) {
@@ -69,6 +78,13 @@ export async function generateMetadata(
   }
 }
 
-export default function BlogDetailPage({ params }: Props) {
-  return <BlogDetailClient slug={params.slug} />;
+export default async function BlogDetailPage({ params }: Props) {
+  const json = await fetchBlog(params.slug);
+  const blog: Blog = json.data?.[0];
+
+  if (!blog) {
+    return <div className="p-8 text-red-600 text-center">Blog not found.</div>;
+  }
+
+  return <Detail blog={blog} />;
 }
