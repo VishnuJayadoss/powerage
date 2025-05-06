@@ -61,7 +61,7 @@ export default function NewlyLaunched() {
 
                 {/* Card 3 */}
                 <div>
-                    <div className="group relative mt-[100px] h-[400px] overflow-hidden">
+                    <div className="group relative mt-[20px] md:mt-[100px] lg:mt-[100px] h-[400px] overflow-hidden">
                         <Image
                             src="/home/banner.webp"
                             alt="category"

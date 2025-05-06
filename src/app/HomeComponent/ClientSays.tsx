@@ -87,8 +87,8 @@ export default function ClientSays() {
                     >
                         {video.map((videos, index) => (
                             <SwiperSlide key={index}>
-                                <div className="bg-white shadow-md p-4 rounded-xl transition-all duration-300">
-                                    <div className="relative rounded-xl aspect-video overflow-hidden">
+                                <div className="p-4 transition-all duration-300">
+                                    <div className="relative aspect-video overflow-hidden">
                                         <Image
                                             src={videos.image}
                                             alt={videos.title}

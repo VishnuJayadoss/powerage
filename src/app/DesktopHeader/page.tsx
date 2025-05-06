@@ -35,9 +35,9 @@ export default function Desktop() {
 
     return (
         <>
-            <div className='flex justify-between items-center mx-auto px-4 py-3 pl-10 md:pl-0 lg:pl-0 max-w-7xl'>
+            <div className='flex justify-between items-center mx-auto px-4 py-2 pl-10 md:pl-0 lg:pl-0 max-w-7xl'>
                 <Link href='/' className='font-bold text-xl logo'>
-                    <Image src='/logo.png' alt='Logo' width={150} height={40} priority className='pt-4 lg:pt-0' />
+                    <Image src='/logo.png' alt='Logo' width={150} height={40} priority className='pt-2 lg:pt-0' />
                 </Link>
 
                 <div className='flex items-center gap-6'>

@@ -1,4 +1,3 @@
-import type { Metadata } from "next";
 import "./HomeComponent/style.css"
 import Banner from "./HomeComponent/Banner";
 import Filter from "./HomeComponent/Filter";
@@ -10,18 +9,12 @@ import Explore from "./HomeComponent/Explore";
 import OurProcess from "./HomeComponent/OurProcess";
 import Assured from "./HomeComponent/Assured";
 import ClientSays from "./HomeComponent/ClientSays";
-
-
-
-export const metadata: Metadata = {
-  title: "Powerage Performance",
-  description: "Powerage Performance",
-};
-
+import Popupcur from "./HomeComponent/Popupcur";
 
 export default function Home() {
   return (
     <>
+      <Popupcur />
       <Banner />
       <Filter />
       <Columns />

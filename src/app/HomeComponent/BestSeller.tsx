@@ -45,7 +45,7 @@ export default function BestSeller() {
                     </h3>
                 </div>
 
-                <div className="gap-2 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
+                <div className="gap-2 grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4">
                     {seller.map((sellers, index) => (
                         <Link href={sellers.slug} key={index}>
                             <div className="bg-white rounded hover:-translate-y-2 duration-300 seller-card">

@@ -27,9 +27,9 @@ export default function TopHeader() {
                 </div>
 
                 {/* Right dropdowns */}
-                <div className="flex items-center gap-4 text-white">
+                <div className="flex items-center text-white">
                     {/* Currency Dropdown */}
-                    <div className="relative w-20 lg:w-15">
+                    <div className="relative pl-8 md:pl-0 lg:pl-0 w-15">
                         <button
                             onClick={() => setIsCurrencyOpen(!isCurrencyOpen)}
                             className="flex items-center gap-1 bg-black pl-2 lg:pl-6 focus:outline-none w-full text-[12px] text-left"
@@ -60,7 +60,7 @@ export default function TopHeader() {
                     <div className="relative w-24 md:w-32">
                         <button
                             onClick={() => setIsLangOpen(!isLangOpen)}
-                            className="flex items-center gap-1 bg-black pl-2 focus:outline-none w-full text-[12px] text-left"
+                            className="flex items-center gap-1 bg-black pl-8 md:pl-4 lg:pl-4 focus:outline-none w-full text-[12px] text-left"
                         >
                             <span>{selectedLang}</span>
                             <ChevronDown size={14} />

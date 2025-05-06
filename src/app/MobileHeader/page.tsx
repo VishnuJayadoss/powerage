@@ -11,7 +11,7 @@ export default function MobileHeader() {
 
     return (
         <>
-            <button onClick={() => setIsOpen(true)} className='md:hidden top-[70px] left-[5px] absolute'>
+            <button onClick={() => setIsOpen(true)} className='md:hidden top-[60px] left-[5px] absolute'>
                 <Menu size={24} />
             </button>
 
