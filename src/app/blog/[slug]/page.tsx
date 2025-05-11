@@ -14,36 +14,58 @@ type BlogData = {
 };
 
 export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
-    const res = await fetch(`https://saddlebrown-stingray-368718.hostingersite.com/api/blog/${params.slug}`);
-    const json = await res.json();
+    try {
+        const res = await fetch(`https://saddlebrown-stingray-368718.hostingersite.com/api/blog/${params.slug}`);
 
-    // if (!json.data || json.data.length === 0) {
-    //     return {
-    //         title: 'Powerage | Blog',
-    //         description: 'Blog not found',
-    //     };
-    // }
+        if (!res.ok) { // handle HTTP errors
+            throw new Error(`Failed to fetch blog data: ${res.status}`);
+        }
+        const json = await res.json();
 
-    const blog: BlogData = json.data[0];
+        if (!json.data || json.data.length === 0) {
+            return {
+                title: 'Powerage | Blog',
+                description: 'Blog not found',
+            };
+        }
 
-    return {
-        title: blog.meta_title,
-        description: blog.meta_desc,
-    };
+        const blog: BlogData = json.data[0];
+
+        return {
+            title: blog.meta_title,
+            description: blog.meta_desc,
+        };
+    } catch (error) {
+        // Handle errors during fetching or processing.  Important for robustness.
+        console.error("Error in generateMetadata:", error);
+        return { // Provide fallback metadata to prevent the entire page from crashing.
+            title: 'Powerage | Blog',
+            description: 'Error fetching blog data',
+        };
+    }
 }
 
 export default async function Blogdetail({ params }: { params: { slug: string } }) {
-    const res = await fetch(`https://saddlebrown-stingray-368718.hostingersite.com/api/blog/${params.slug}`, {
-        cache: 'no-store', // disable caching for fresh data
-    });
+    try {
+        const res = await fetch(`https://saddlebrown-stingray-368718.hostingersite.com/api/blog/${params.slug}`, {
+            cache: 'no-store', // disable caching for fresh data
+        });
 
-    const json = await res.json();
+        if (!res.ok) {
+            throw new Error(`Failed to fetch blog detail: ${res.status}`);
+        }
+        const json = await res.json();
 
-    if (!json.data || json.data.length === 0) {
-        notFound();
+        if (!json.data || json.data.length === 0) {
+            notFound();
+        }
+
+        const blog: BlogData = json.data[0];
+
+        return <Detail blog={blog} />;
+    } catch (error) {
+        console.error("Error in Blogdetail:", error);
+        //  Consider showing a user-friendly error page or message here.
+        notFound(); // Or a custom error page.  This example uses notFound
     }
-
-    const blog: BlogData = json.data[0];
-
-    return <Detail blog={blog} />;
 }
