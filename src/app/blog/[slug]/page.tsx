@@ -1,3 +1,5 @@
+// src/app/blog/[slug]/page.tsx
+
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import Detail from './Components/Detail';
@@ -18,15 +20,16 @@ async function getBlogData(slug: string): Promise<BlogData | null> {
         const res = await fetch(`https://your-api-url.com/api/blog/${slug}`, {
             cache: 'no-store',
         });
+
         if (!res.ok) return null;
-        const data = await res.json();
-        return data;
+
+        return await res.json();
     } catch {
         return null;
     }
 }
 
-// Correct type for generateMetadata
+// ✅ Correct usage of generateMetadata with destructured params
 export async function generateMetadata({
     params,
 }: {
@@ -36,8 +39,8 @@ export async function generateMetadata({
 
     if (!blog) {
         return {
-            title: 'Blog not found',
-            description: 'No blog content found.',
+            title: 'Not Found',
+            description: 'Blog not found.',
         };
     }
 
@@ -58,6 +61,7 @@ export async function generateMetadata({
     };
 }
 
+// ✅ Correct usage of page component with { params }
 export default async function BlogPage({
     params,
 }: {
@@ -66,7 +70,7 @@ export default async function BlogPage({
     const blog = await getBlogData(params.slug);
 
     if (!blog) {
-        notFound(); // Triggers 404
+        notFound(); // Show 404 page
     }
 
     return <Detail blog={blog} />;
