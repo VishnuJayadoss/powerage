@@ -1,3 +1,5 @@
+import { Metadata } from 'next';
+import { notFound } from 'next/navigation';
 import Detail from './Components/Detail';
 
 type BlogData = {
@@ -11,17 +13,34 @@ type BlogData = {
     meta_desc: string;
 };
 
-async function getBlogData(slug: string): Promise<BlogData> {
-    const res = await fetch(`https://your-api-url.com/api/blog/${slug}`, {
-        cache: 'no-store',
-    });
-    if (!res.ok) throw new Error('Failed to fetch blog data');
-    return res.json();
+async function getBlogData(slug: string): Promise<BlogData | null> {
+    try {
+        const res = await fetch(`https://your-api-url.com/api/blog/${slug}`, {
+            cache: 'no-store',
+        });
+        if (!res.ok) return null;
+        const data = await res.json();
+        return data;
+    } catch (error) {
+        return null;
+    }
 }
 
-// Dynamic metadata using the blog's meta info
-export async function generateMetadata({ params }: { params: { slug: string } }) {
+// Correct type for generateMetadata
+export async function generateMetadata({
+    params,
+}: {
+    params: { slug: string };
+}): Promise<Metadata> {
     const blog = await getBlogData(params.slug);
+
+    if (!blog) {
+        return {
+            title: 'Blog not found',
+            description: 'No blog content found.',
+        };
+    }
+
     return {
         title: blog.meta_title,
         description: blog.meta_desc,
@@ -32,13 +51,23 @@ export async function generateMetadata({ params }: { params: { slug: string } })
             images: [
                 {
                     url: `https://saddlebrown-stingray-368718.hostingersite.com/${blog.blog_banner_img}`,
+                    alt: blog.blog_banner_title,
                 },
             ],
         },
     };
 }
 
-export default async function BlogPage({ params }: { params: { slug: string } }) {
+export default async function BlogPage({
+    params,
+}: {
+    params: { slug: string };
+}) {
     const blog = await getBlogData(params.slug);
+
+    if (!blog) {
+        notFound(); // Triggers 404
+    }
+
     return <Detail blog={blog} />;
 }
