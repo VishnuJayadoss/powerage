@@ -1,5 +1,5 @@
 // app/blog/[slug]/page.tsx
-import type { Metadata, ResolvingMetadata } from 'next';
+import type { Metadata } from 'next';
 import Detail from './Components/Detail';
 
 type Props = {
@@ -9,7 +9,7 @@ type Props = {
 
 export async function generateMetadata(
     { params }: Props,
-    parent: ResolvingMetadata
+    // parent: ResolvingMetadata
 ): Promise<Metadata> {
     const { slug } = params;
 
