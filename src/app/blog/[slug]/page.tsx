@@ -1,3 +1,5 @@
+// File: /app/blog/[slug]/page.tsx
+
 import { notFound } from 'next/navigation';
 import Detail from './Components/Detail';
 import type { Metadata } from 'next';
@@ -13,11 +15,12 @@ type BlogData = {
   blog_desc2: string;
 };
 
-interface PageProps {
+// This must exactly match the `[slug]` part in your folder structure
+type Props = {
   params: {
     slug: string;
   };
-}
+};
 
 async function getBlogData(slug: string): Promise<BlogData | null> {
   try {
@@ -42,7 +45,7 @@ async function getBlogData(slug: string): Promise<BlogData | null> {
   }
 }
 
-export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const blog = await getBlogData(params.slug);
 
   if (!blog) {
@@ -58,7 +61,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   };
 }
 
-export default async function Blogdetail({ params }: PageProps) {
+export default async function Blogdetail({ params }: Props) {
   const blog = await getBlogData(params.slug);
 
   if (!blog) {
