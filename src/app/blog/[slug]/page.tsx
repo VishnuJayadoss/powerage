@@ -17,12 +17,12 @@ export async function generateMetadata({ params }: { params: { slug: string } })
     const res = await fetch(`https://saddlebrown-stingray-368718.hostingersite.com/api/blog/${params.slug}`);
     const json = await res.json();
 
-    if (!json.data || json.data.length === 0) {
-        return {
-            title: 'Powerage | Blog',
-            description: 'Blog not found',
-        };
-    }
+    // if (!json.data || json.data.length === 0) {
+    //     return {
+    //         title: 'Powerage | Blog',
+    //         description: 'Blog not found',
+    //     };
+    // }
 
     const blog: BlogData = json.data[0];
 
