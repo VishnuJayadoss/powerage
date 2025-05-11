@@ -1,72 +1,44 @@
-// File: /app/blog/[slug]/page.tsx
-
-import { notFound } from 'next/navigation';
 import Detail from './Components/Detail';
-import type { Metadata } from 'next';
 
 type BlogData = {
-  meta_title: string;
-  meta_desc: string;
-  blog_name: string;
-  created_at: string;
-  blog_banner_img: string;
-  blog_banner_title: string;
-  blog_desc: string;
-  blog_desc2: string;
+    blog_name: string;
+    created_at: string;
+    blog_banner_img: string;
+    blog_banner_title: string;
+    blog_desc: string;
+    blog_desc2: string;
+    meta_title: string;
+    meta_desc: string;
 };
 
-// This must exactly match the `[slug]` part in your folder structure
-type Props = {
-  params: {
-    slug: string;
-  };
-};
-
-async function getBlogData(slug: string): Promise<BlogData | null> {
-  try {
-    const res = await fetch(`https://saddlebrown-stingray-368718.hostingersite.com/api/blog/${slug}`, {
-      cache: 'no-store',
+async function getBlogData(slug: string): Promise<BlogData> {
+    const res = await fetch(`https://your-api-url.com/api/blog/${slug}`, {
+        cache: 'no-store',
     });
-
-    if (!res.ok) {
-      throw new Error(`Failed to fetch blog data: ${res.status}`);
-    }
-
-    const json = await res.json();
-
-    if (!json.data || json.data.length === 0) {
-      return null;
-    }
-
-    return json.data[0] as BlogData;
-  } catch (error) {
-    console.error('Error fetching blog data:', error);
-    return null;
-  }
+    if (!res.ok) throw new Error('Failed to fetch blog data');
+    return res.json();
 }
 
-export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const blog = await getBlogData(params.slug);
-
-  if (!blog) {
+// Dynamic metadata using the blog's meta info
+export async function generateMetadata({ params }: { params: { slug: string } }) {
+    const blog = await getBlogData(params.slug);
     return {
-      title: 'Powerage | Blog',
-      description: 'Blog not found',
+        title: blog.meta_title,
+        description: blog.meta_desc,
+        openGraph: {
+            title: blog.meta_title,
+            description: blog.meta_desc,
+            url: `https://your-site.com/blog/${params.slug}`,
+            images: [
+                {
+                    url: `https://saddlebrown-stingray-368718.hostingersite.com/${blog.blog_banner_img}`,
+                },
+            ],
+        },
     };
-  }
-
-  return {
-    title: blog.meta_title,
-    description: blog.meta_desc,
-  };
 }
 
-export default async function Blogdetail({ params }: Props) {
-  const blog = await getBlogData(params.slug);
-
-  if (!blog) {
-    notFound();
-  }
-
-  return <Detail blog={blog} />;
+export default async function BlogPage({ params }: { params: { slug: string } }) {
+    const blog = await getBlogData(params.slug);
+    return <Detail blog={blog} />;
 }
