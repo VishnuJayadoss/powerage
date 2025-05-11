@@ -16,7 +16,7 @@ type BlogData = {
 
 async function getBlogData(slug: string): Promise<BlogData | null> {
     try {
-        const res = await fetch(`https://your-api-url.com/api/blog/${slug}`, {
+        const res = await fetch(`https://saddlebrown-stingray-368718.hostingersite.com/api/blog/${slug}`, {
             cache: 'no-store',
         });
         if (!res.ok) return null;
