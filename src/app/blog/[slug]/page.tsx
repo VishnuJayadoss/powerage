@@ -21,7 +21,7 @@ async function getBlogData(slug: string): Promise<BlogData | null> {
         if (!res.ok) return null;
         const data = await res.json();
         return data;
-    } catch (error) {
+    } catch {
         return null;
     }
 }
