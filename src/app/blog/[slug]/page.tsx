@@ -1,33 +1,68 @@
-// app/blog/[slug]/page.tsx
-import type { Metadata } from 'next';
+import { Metadata } from 'next';
+import { notFound } from 'next/navigation';
 import Detail from './Components/Detail';
 
-type Props = {
-    params: { slug: string };
-    searchParams?: { [key: string]: string | string[] | undefined };
+type BlogData = {
+  blog_name: string;
+  created_at: string;
+  blog_banner_img: string;
+  blog_banner_title: string;
+  blog_desc: string;
+  blog_desc2: string;
+  meta_title: string;
+  meta_desc: string;
 };
 
-export async function generateMetadata(
-    { params }: Props,
-    // parent: ResolvingMetadata
-): Promise<Metadata> {
-    const { slug } = params;
-
-    // fetch data
-    const res = await fetch(`https://saddlebrown-stingray-368718.hostingersite.com/api/blog/${slug}`);
-    const product = await res.json();
-
-    return {
-        title: product.metatitle,
-        description: product.metadesc || '',
-    };
+// Fetch blog data from API
+async function getBlogData(slug: string): Promise<BlogData | null> {
+  try {
+    const res = await fetch(
+      `https://saddlebrown-stingray-368718.hostingersite.com/api/blog/${slug}`,
+      {
+        cache: 'no-store',
+      }
+    );
+    if (!res.ok) return null;
+    return await res.json();
+  } catch {
+    return null;
+  }
 }
 
-export default async function Page({ params }: Props) {
-    const { slug } = params;
+// Metadata generator
+type Params = Promise<{ slug: string }>;
 
-    const res = await fetch(`https://saddlebrown-stingray-368718.hostingersite.com/api/blog/${slug}`);
-    const blog = await res.json();
+export async function generateMetadata({
+  params,
+}: {
+  params: Params;
+}): Promise<Metadata> {
+  const { slug } = await params;
+  const blog = await getBlogData(slug);
 
-    return <Detail blog={blog} />;
+  if (!blog) {
+    return {
+      title: 'Blog not found',
+      description: 'No description available.',
+    };
+  }
+
+  return {
+    title: blog.meta_title,
+    description: blog.meta_desc,
+  };
+}
+
+// Page component
+export default async function BlogPage({
+  params,
+}: {
+  params: Params;
+}) {
+  const { slug } = await params;
+  const blog = await getBlogData(slug);
+
+  if (!blog) notFound();
+
+  return <Detail blog={blog} />;
 }
