@@ -13,59 +13,53 @@ type BlogData = {
     blog_desc2: string;
 };
 
-export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
+type Params = { slug: string };
+
+async function getBlogData(slug: string): Promise<BlogData | null> {
     try {
-        const res = await fetch(`https://saddlebrown-stingray-368718.hostingersite.com/api/blog/${params.slug}`);
-
-        if (!res.ok) { // handle HTTP errors
-            throw new Error(`Failed to fetch blog data: ${res.status}`);
-        }
-        const json = await res.json();
-
-        if (!json.data || json.data.length === 0) {
-            return {
-                title: 'Powerage | Blog',
-                description: 'Blog not found',
-            };
-        }
-
-        const blog: BlogData = json.data[0];
-
-        return {
-            title: blog.meta_title,
-            description: blog.meta_desc,
-        };
-    } catch (error) {
-        // Handle errors during fetching or processing.  Important for robustness.
-        console.error("Error in generateMetadata:", error);
-        return { // Provide fallback metadata to prevent the entire page from crashing.
-            title: 'Powerage | Blog',
-            description: 'Error fetching blog data',
-        };
-    }
-}
-
-export default async function Blogdetail({ params }: { params: { slug: string } }) {
-    try {
-        const res = await fetch(`https://saddlebrown-stingray-368718.hostingersite.com/api/blog/${params.slug}`, {
-            cache: 'no-store', // disable caching for fresh data
+        const res = await fetch(`https://saddlebrown-stingray-368718.hostingersite.com/api/blog/${slug}`, {
+            cache: 'no-store',
         });
 
         if (!res.ok) {
-            throw new Error(`Failed to fetch blog detail: ${res.status}`);
+            throw new Error(`Failed to fetch blog data: ${res.status}`);
         }
+
         const json = await res.json();
 
         if (!json.data || json.data.length === 0) {
-            notFound();
+            return null;
         }
 
-        const blog: BlogData = json.data[0];
-
-        return <Detail blog={blog} />;
+        return json.data[0] as BlogData;
     } catch (error) {
-        console.error("Error in Blogdetail:", error);
-        //  Consider showing a user-friendly error page or message here.
-        notFound(); // Or a custom error page.  This example uses notFound
+        console.error('Error fetching blog data:', error);
+        return null;
     }
+}
+
+export async function generateMetadata({ params }: { params: Params }): Promise<Metadata> {
+    const blog = await getBlogData(params.slug);
+
+    if (!blog) {
+        return {
+            title: 'Powerage | Blog',
+            description: 'Blog not found',
+        };
+    }
+
+    return {
+        title: blog.meta_title,
+        description: blog.meta_desc,
+    };
+}
+
+export default async function Blogdetail({ params }: { params: Params }) {
+    const blog = await getBlogData(params.slug);
+
+    if (!blog) {
+        notFound();
+    }
+
+    return <Detail blog={blog} />;
 }
