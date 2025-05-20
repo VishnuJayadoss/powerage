@@ -8,11 +8,22 @@ import { RiArrowRightSLine, RiArrowLeftSLine } from "react-icons/ri";
 
 
 export default function Product() {
+
+    interface ProductItem {
+        slug: string;
+        title: string;
+        vendor: string;
+        price: string;
+        img: string;
+    }
+
+
+
     const [sortBy, setSortBy] = useState("");
     const [showDrawer, setShowDrawer] = useState(false);
     const [selectedPrices, setSelectedPrices] = useState<string[]>([]);
 
-    const handleSort = (a: any, b: any) => {
+    const handleSort = (a: ProductItem, b: ProductItem) => {
         switch (sortBy) {
             case "az":
                 return a.title.localeCompare(b.title);
