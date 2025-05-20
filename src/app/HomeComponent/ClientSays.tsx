@@ -74,9 +74,9 @@ export default function ClientSays() {
                 <div className="p-4 pb-[40px]">
                     <Swiper
                         spaceBetween={20}
-                        slidesPerView={1.2}
+                        slidesPerView={1}
                         breakpoints={{
-                            640: { slidesPerView: 1.5 },
+                            640: { slidesPerView: 1 },
                             768: { slidesPerView: 2 },
                             1024: { slidesPerView: 3 },
                         }}
@@ -93,7 +93,7 @@ export default function ClientSays() {
                                             src={videos.image}
                                             alt={videos.title}
                                             fill
-                                            className="object-cover"
+                                            className="w-full object-cover"
                                         />
                                         <div className="z-0 absolute inset-0 bg-black opacity-20"></div>
                                         <button
