@@ -1,7 +1,29 @@
+"use client";
+
 import Link from 'next/link'
-import { FaFacebookF, FaInstagram, FaYoutube } from 'react-icons/fa';
+import { useEffect, useState } from 'react';
+import { FaFacebookF, FaInstagram, FaYoutube, FaWhatsapp } from 'react-icons/fa';
 
 export default function Footer() {
+
+    const [showButton, setShowButton] = useState(false);
+
+    useEffect(() => {
+        if (typeof window === "undefined") return;
+
+        const handleScroll = () => {
+            setShowButton(window.scrollY > 100);
+        };
+
+        window.addEventListener("scroll", handleScroll);
+        return () => window.removeEventListener("scroll", handleScroll);
+    }, []);
+
+
+    const handleClick = () => {
+        window.open("https://wa.me/916379672206", "_blank");
+    };
+
     return (
         <>
             <footer className="bg-black px-6 py-10 text-[15px] text-gray-300">
@@ -77,6 +99,20 @@ export default function Footer() {
                     <Link href="https://www.facebook.com/powerageperformance?rdid=nCtQEs62fgAtp5D7&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F1BcuHFt5Pr%2F#"><FaFacebookF /></Link>
                     <Link href="https://www.instagram.com/powerage_performance/?igsh=MXBxdWR6MDduYnN1cg%3D%3D&utm_source=ig_contact_invite#"><FaInstagram /></Link>
                     <Link href="https://www.youtube.com/@powerageperformance"><FaYoutube /></Link>
+                </div>
+
+
+                <div
+                    className={`fixed bottom-6 right-6 z-50 transition-opacity duration-300 ${showButton ? "opacity-100" : "opacity-0 pointer-events-none"
+                        }`}
+                >
+                    <button
+                        onClick={handleClick}
+                        className="bg-green-500 hover:bg-green-600 shadow-lg p-3 rounded-full text-white cursor-pointer"
+                        aria-label="Chat on WhatsApp"
+                    >
+                        <FaWhatsapp size={24} />
+                    </button>
                 </div>
             </footer>
 

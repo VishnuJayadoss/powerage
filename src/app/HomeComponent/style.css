@@ -62,10 +62,10 @@
   padding: 15px 35px;
   transition: 0.4s ease-in-out;
 }
-.process__item:hover {
+/* .process__item:hover {
   background: #000;
   color: #ffffff;
-}
+} */
 .process__item:hover .process__number {
   transform: translateY(5px);
   color: #e7000b;
@@ -75,13 +75,11 @@
   -webkit-text-stroke: 1px #e7000b;
   display: block;
   color: transparent;
-  font-family: "Roboto Condensed";
   font-weight: 700;
   transition: 0.4s ease-in-out;
 }
 .process__title {
   display: block;
-  font-family: "Roboto Condensed";
   font-weight: 700;
   letter-spacing: 1.5px;
   font-size: 22px;
@@ -91,7 +89,6 @@
 }
 .process__subtitle {
   display: block;
-  font-family: "Josefin Slab";
   font-size: 20px;
   color: #8c8c8c;
   margin-top: 30px;

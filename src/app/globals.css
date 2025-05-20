@@ -66,3 +66,10 @@ body {
   font-family: var(--font-cal-sans);
   letter-spacing: 2px;
 }
+
+@media(max-width: 576px){
+  .mobileResponsive {
+    position: fixed !important;
+    bottom: 0px !important;
+  }
+}

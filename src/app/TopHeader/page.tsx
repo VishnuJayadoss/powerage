@@ -17,13 +17,13 @@ export default function TopHeader() {
             <div className="flex justify-between items-center">
                 {/* Left text */}
                 <div className="hidden md:block text-white">
-                    <p><span className="font-black">Worldwide</span> Shipping</p>
+                    <p className='text-[14px]'><span className="font-black">Worldwide</span> Shipping</p>
                 </div>
 
                 {/* Center image and text */}
                 <div className="flex items-center gap-2 text-white">
-                    <Image src="/india.webp" alt="India" width={30} height={30} />
-                    <p><span className="font-semibold">Handcrafted in</span> India</p>
+                    <Image src="/india.webp" alt="India" width={20} height={20} />
+                    <p className='text-[14px]'><span className="font-semibold">Handcrafted in</span> India</p>
                 </div>
 
                 {/* Right dropdowns */}

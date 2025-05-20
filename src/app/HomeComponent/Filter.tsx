@@ -4,7 +4,6 @@ import { IoIosArrowDown } from "react-icons/io";
 
 const makes = ["Royal Enfield", "Honda", "Hero"];
 const models = ["GT", "Classic", "Bear 650"];
-const years = ["2012 - 2020", "2021 - 2023", "2024 - 2025"];
 
 export default function Filter() {
     const [makeOpen, setMakeOpen] = useState(false);
@@ -15,10 +14,6 @@ export default function Filter() {
     const [selectedModel, setSelectedModel] = useState("Select Model");
     const [modelSearch, setModelSearch] = useState("");
 
-    const [yearOpen, setYearOpen] = useState(false);
-    const [selectedYear, setSelectedYear] = useState("Select Year");
-    const [yearSearch, setYearSearch] = useState("");
-
     const filteredMakes = makes.filter(make =>
         make.toLowerCase().includes(makeSearch.toLowerCase())
     );
@@ -27,17 +22,13 @@ export default function Filter() {
         model.toLowerCase().includes(modelSearch.toLowerCase())
     );
 
-    const filteredYears = years.filter(year =>
-        year.toLowerCase().includes(yearSearch.toLowerCase())
-    );
-
     return (
         <section className="bg-black px-6 py-6">
             <h2 className="mb-6 font-extrabold text-white text-xl text-center uppercase tracking-wider">
                 Select Your Bike
             </h2>
             <form action="">
-                <div className="flex flex-wrap justify-center gap-6">
+                <div className="flex flex-wrap justify-center items-center gap-6">
                     {/* Make Dropdown */}
                     <Dropdown
                         label="1"
@@ -64,23 +55,10 @@ export default function Filter() {
                         placeholder="Select Model"
                     />
 
-                    {/* Year Dropdown */}
-                    <Dropdown
-                        label="3"
-                        selected={selectedYear}
-                        setSelected={setSelectedYear}
-                        open={yearOpen}
-                        setOpen={setYearOpen}
-                        items={filteredYears}
-                        search={yearSearch}
-                        setSearch={setYearSearch}
-                        placeholder="Select Year"
-                    />
-
                     {/* Filter Button */}
                     <button
                         type="submit"
-                        className="bg-red-600 hover:bg-red-700 px-6 py-2 rounded-full font-bold text-white uppercase tracking-wider cursor-pointer"
+                        className="bg-red-600 hover:bg-red-700 px-6 py-2 font-bold text-white uppercase tracking-wider cursor-pointer"
                     >
                         Filter
                     </button>
@@ -112,7 +90,7 @@ function Dropdown({
     placeholder: string;
 }) {
     return (
-        <div className="relative pb-2 min-w-[300px] text-white">
+        <div className="relative min-w-[300px] text-white">
             <div
                 className="flex items-center gap-2 px-4 py-2 border border-white rounded-full cursor-pointer"
                 onClick={() => setOpen(!open)}

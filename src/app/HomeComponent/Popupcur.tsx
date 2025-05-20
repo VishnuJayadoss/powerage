@@ -48,9 +48,9 @@ const AutoPopup = () => {
                     <Image src="/logo.png" alt='logo' width={150} height={150} />
                 </div>
 
-                <p className='pb-5'>Select your Country Where to</p>
+                {/* <p className='pb-5'>Select your Country Where to</p> */}
 
-                <h5 className='pb-3 font-black text-[22px]'>Shipping In</h5>
+                <h5 className='pb-3 font-black text-[22px]'>Shipping To</h5>
 
                 <div className="flex justify-center items-center gap-5 pt-2">
                     <button className='bg-red-600 p-2 pr-5 pl-5 text-white cursor-pointer'>India</button>
