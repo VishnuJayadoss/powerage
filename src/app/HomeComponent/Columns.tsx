@@ -2,25 +2,6 @@ import Image from "next/image";
 
 export default function Columns() {
 
-    const column = [
-        {
-            img: "/home/enhanced-performances.png",
-            title: "Enhanced Performance"
-        },
-        {
-            img: "/home/high-quality-material.png",
-            title: "High Quality Material"
-        },
-        {
-            img: "/home/dyno-tested.png",
-            title: "Dyno Tested"
-        },
-        {
-            img: "/home/easy-installation.png",
-            title: "Easy Installation"
-        },
-    ];
-
     return (
         <section className="bg-white pt-4">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 p-5">

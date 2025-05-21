@@ -6,6 +6,14 @@ import { motion, AnimatePresence } from "framer-motion";
 import { IoFilterOutline } from "react-icons/io5";
 import { RiArrowRightSLine, RiArrowLeftSLine } from "react-icons/ri";
 
+// Add this type above your Product component
+type ProductType = {
+    slug: string;
+    title: string;
+    vendor: string;
+    price: string;
+    img: string;
+};
 
 export default function Product() {
     const [sortBy, setSortBy] = useState("");
@@ -32,7 +40,8 @@ export default function Product() {
 
 
 
-    const handleSort = (a: any, b: any) => {
+    // Change 'any' to 'ProductType'
+    const handleSort = (a: ProductType, b: ProductType) => {
         switch (sortBy) {
             case "az":
                 return a.title.localeCompare(b.title);

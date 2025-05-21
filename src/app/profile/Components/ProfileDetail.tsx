@@ -84,7 +84,7 @@ export default function ProfileDetail() {
                             </button>
                         </div>
                         <p className="text-[16px]">
-                            D.No. 54, 1st Floor, Above Hang 'Out', <br />
+                            D.No. 54, 1st Floor, Above Hang &apos;Out&apos;, <br />
                             Bharathi Park Rd, 7th cross,<br />
                             Saibaba colony,<br />
                             Coimbatore - 641011.
