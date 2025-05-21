@@ -122,7 +122,7 @@ export default function DesktopHeader() {
                 </button>
 
                 {/* Dropdown */}
-                <div className="invisible hover:visible peer-hover:visible top-[100%] left-[-520px] z-50 absolute bg-[#f5f5f5] opacity-0 hover:opacity-100 peer-hover:opacity-100 shadow-xl mt-4 px-8 py-6 rounded-md lg:w-[900px] h-40 text-sm transition-all duration-300 ease-in-out dropdown-menu-product">
+                <div className="invisible hover:visible peer-hover:visible top-[100%] left-[-50px] z-50 absolute bg-[#f5f5f5] opacity-0 hover:opacity-100 peer-hover:opacity-100 shadow-xl mt-4 px-8 py-6 rounded-md lg:w-[900px] h-40 text-sm transition-all duration-300 ease-in-out dropdown-menu-product">
                   <div className="flex gap-8 w-full">
                     {/* Left: Store message */}
                     <div className="w-1/2">
