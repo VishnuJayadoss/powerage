@@ -1,29 +1,38 @@
 "use client";
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { IoFilterOutline } from "react-icons/io5";
 import { RiArrowRightSLine, RiArrowLeftSLine } from "react-icons/ri";
 
 
 export default function Product() {
-
-    interface ProductItem {
-        slug: string;
-        title: string;
-        vendor: string;
-        price: string;
-        img: string;
-    }
-
-
-
     const [sortBy, setSortBy] = useState("");
     const [showDrawer, setShowDrawer] = useState(false);
     const [selectedPrices, setSelectedPrices] = useState<string[]>([]);
+    const [loading, setLoading] = useState(true);
 
-    const handleSort = (a: ProductItem, b: ProductItem) => {
+    useEffect(() => {
+        const timer = setTimeout(() => {
+            setLoading(false);
+        }, 1000);
+        return () => clearTimeout(timer);
+    }, []);
+
+
+    const SkeletonCard = () => (
+        <div className="p-4 rounded animate-pulse">
+            <div className="bg-gray-300 mb-3 rounded w-full h-[130px]"></div>
+            <div className="bg-gray-300 mb-2 rounded w-1/2 h-4"></div>
+            <div className="bg-gray-300 mb-2 rounded w-full h-5"></div>
+            <div className="bg-gray-300 rounded w-1/3 h-4"></div>
+        </div>
+    );
+
+
+
+    const handleSort = (a: any, b: any) => {
         switch (sortBy) {
             case "az":
                 return a.title.localeCompare(b.title);
@@ -119,28 +128,50 @@ export default function Product() {
                 </div>
 
                 {/* Product Cards */}
-                <div className="gap-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 col-span-3">
-                    {filteredProducts.map((product, index) => (
-                        <Link href={product.slug} key={index}>
-                            <div className="p-4 rounded transition hover:-translate-y-2 duration-300">
-                                <div className="mb-2">
-                                    <Image
-                                        src={product.img}
-                                        alt={product.title}
-                                        width={350}
-                                        height={250}
-                                        className="w-full h-auto"
-                                    />
-                                </div>
-                                <div>
-                                    <p className="text-[12px] text-gray-400 uppercase">{product.vendor}</p>
-                                    <h3 className="mt-1 font-semibold">{product.title}</h3>
-                                    <p className="mt-1 font-medium">{product.price}</p>
-                                </div>
-                            </div>
-                        </Link>
-                    ))}
-                </div>
+                <motion.div
+                    layout
+                    className="gap-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 col-span-3"
+                >
+                    <AnimatePresence>
+                        {loading
+                            ? Array.from({ length: 6 }).map((_, index) => (
+                                <SkeletonCard key={index} />
+                            ))
+                            : filteredProducts.map((product, index) => (
+                                <motion.div
+                                    key={index}
+                                    layout
+                                    initial={{ opacity: 0, scale: 0.95 }}
+                                    animate={{ opacity: 1, scale: 1 }}
+                                    exit={{ opacity: 0, scale: 0.95 }}
+                                    transition={{ duration: .8 }}
+                                >
+                                    <Link href={product.slug}>
+                                        <div className="p-4 rounded transition hover:-translate-y-2 duration-300">
+                                            <div className="mb-2">
+                                                <Image
+                                                    src={product.img}
+                                                    alt={product.title}
+                                                    width={350}
+                                                    height={250}
+                                                    className="w-full h-auto"
+                                                />
+                                            </div>
+                                            <div>
+                                                <p className="text-[12px] text-gray-400 uppercase">
+                                                    {product.vendor}
+                                                </p>
+                                                <h3 className="mt-1 font-semibold">{product.title}</h3>
+                                                <p className="mt-1 font-medium">{product.price}</p>
+                                            </div>
+                                        </div>
+                                    </Link>
+                                </motion.div>
+                            ))}
+                    </AnimatePresence>
+                </motion.div>
+
+
             </div>
 
             <div className="flex justify-end mt-6 px-4 lg:px-[70px] pb-5">

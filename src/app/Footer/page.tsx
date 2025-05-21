@@ -68,6 +68,9 @@ export default function Footer() {
                                 <Link href="/contact" className="block pb-3 hover:text-red-500">
                                     Contact
                                 </Link>
+                                <Link href="/order" className="block pb-3 hover:text-red-500">
+                                    Orders
+                                </Link>
                             </li>
                         </ul>
                     </div>
