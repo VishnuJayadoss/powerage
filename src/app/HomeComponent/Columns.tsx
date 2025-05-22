@@ -15,9 +15,9 @@ export default function Columns() {
 
                 <div className="flex flex-col justify-center items-center pb-4 text-black text-center">
                     <div className="pb-3">
-                        <Image src="/home/high-quality-material1.png" alt="High Quality Material" width={70} height={40} className="pb-3" />
+                        <Image src="/home/high-quality-material1.png" alt="High Quality Material" width={80} height={40} className="pb-3" />
                     </div>
-                    <h3 className="mt-2 font-black text-[16px] uppercase">High Quality Material</h3>
+                    <h3 className="font-black text-[16px] uppercase">High Quality Material</h3>
                 </div>
 
                 <div className="flex flex-col justify-center items-center pb-4 text-black text-center">
