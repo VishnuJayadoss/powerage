@@ -13,7 +13,7 @@ export default function TopHeader() {
     const currencyOptions = ['INR', 'USD']
 
     return (
-        <div className="bg-black p-2 px-2 lg:px-10">
+        <div className="top-0 z-40 fixed bg-black p-2 px-2 lg:px-10 w-full">
             <div className="flex justify-between items-center">
                 {/* Left text */}
                 <div className="hidden md:block text-white">

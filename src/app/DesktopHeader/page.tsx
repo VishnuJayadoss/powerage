@@ -41,7 +41,7 @@ export default function DesktopHeader() {
       <div
         className={clsx(
           "z-50 fixed flex flex-row w-full transition-all duration-500",
-          scrolled ? "top-0" : "top-8"
+          scrolled ? "top-8" : "top-8"
         )}
         style={{
           transition: "top 0.5s",
@@ -54,7 +54,7 @@ export default function DesktopHeader() {
           <Link className="pt-[8px]" href="/en.html">
             <Image
               src="/logo.png"
-              alt="Akrapovič"
+              alt="powerage"
               width={180}
               height={60}
               className={clsx(
@@ -81,7 +81,7 @@ export default function DesktopHeader() {
           ></div>
           <div
             className={clsx(
-              "overflow-hidden transition-all duration-1000 ease-in-out",
+              "overflow-hidden transition-all duration-100 ease-in-out",
               showShape ? "opacity-100 max-h-[40px]" : "opacity-0 max-h-0"
             )}
             style={{ willChange: "opacity, max-height" }}
@@ -122,7 +122,7 @@ export default function DesktopHeader() {
                 </button>
 
                 {/* Dropdown */}
-                <div className="invisible hover:visible peer-hover:visible top-[100%] left-[-250px] z-50 absolute bg-[#f5f5f5] opacity-0 hover:opacity-100 peer-hover:opacity-100 shadow-xl mt-4 px-8 py-6 rounded-md lg:w-[900px] h-40 text-sm transition-all duration-300 ease-in-out dropdown-menu-product">
+                <div className="invisible hover:visible peer-hover:visible top-[85%] left-[-250px] z-50 absolute bg-[#f5f5f5] opacity-0 hover:opacity-100 peer-hover:opacity-100 shadow-xl mt-4 px-8 py-6 rounded-md lg:w-[900px] h-40 text-sm transition-all duration-300 ease-in-out dropdown-menu-product">
                   <div className="flex gap-8 w-full">
                     {/* Left: Store message */}
                     <div className="w-1/2">
