@@ -18,7 +18,7 @@ export default function Columns() {
                         <Image src="/home/high-quality-materials.png" alt="High Quality Material" width={90} height={40} className="pb-3" />
                     </div>
                     <h3 className="mt-2 font-black text-[16px] uppercase">High Quality Material</h3>
-                </div>
+                </div> 
 
                 <div className="flex flex-col justify-center items-center pb-4 text-black text-center">
                     <div className="pb-3">
