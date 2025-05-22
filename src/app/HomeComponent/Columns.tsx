@@ -24,7 +24,7 @@ export default function Columns() {
                     <div className="pb-3">
                         <Image src="/home/dynotest.png" alt="Dyno Tested" width={80} height={70} className="pb-3" />
                     </div>
-                    <h3 className="-top-4 relative font-black text-[16px] uppercase">Dyno Tested</h3>
+                    <h3 className="-top-3 relative font-black text-[16px] uppercase">Dyno Tested</h3>
                 </div>
 
                 <div className="flex flex-col justify-center items-center pb-4 text-black text-center">
