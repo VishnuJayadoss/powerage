@@ -8,28 +8,28 @@ export default function Columns() {
 
                 <div className="flex flex-col justify-center items-center pb-4 text-black text-center">
                     <div className="pb-3">
-                        <Image src="/home/enhanced-performances.png" alt="Enhanced Performance" width={60} height={40} className="pb-3" />
+                        <Image src="/home/enhanced-performances.png" alt="Enhanced Performance" width={70} height={40} className="pb-3" />
                     </div>
                     <h3 className="mt-2 font-black text-[16px] uppercase">Enhanced Performance</h3>
                 </div>
 
                 <div className="flex flex-col justify-center items-center pb-4 text-black text-center">
                     <div className="pb-3">
-                        <Image src="/home/high-quality-material.png" alt="High Quality Material" width={90} height={40} className="pb-3" />
+                        <Image src="/home/high-quality-material.png" alt="High Quality Material" width={70} height={40} className="pb-3" />
                     </div>
                     <h3 className="mt-2 font-black text-[16px] uppercase">High Quality Material</h3>
-                </div> 
+                </div>
 
                 <div className="flex flex-col justify-center items-center pb-4 text-black text-center">
                     <div className="pb-3">
-                        <Image src="/home/dynotest2.png" alt="Dyno Tested" width={80} height={70} className="pb-3" />
+                        <Image src="/home/dynotest2.png" alt="Dyno Tested" width={100} height={40} className="pb-3" />
                     </div>
                     <h3 className="-top-3 relative font-black text-[16px] uppercase">Dyno Tested</h3>
                 </div>
 
                 <div className="flex flex-col justify-center items-center pb-4 text-black text-center">
                     <div className="pb-3">
-                        <Image src="/home/easy-installation.png" alt="Easy Installation" width={50} height={40} className="pb-3" />
+                        <Image src="/home/easy-installation.png" alt="Easy Installation" width={70} height={40} className="pb-3" />
                     </div>
                     <h3 className="mt-2 font-black text-[16px] uppercase">Easy Installation</h3>
                 </div>
