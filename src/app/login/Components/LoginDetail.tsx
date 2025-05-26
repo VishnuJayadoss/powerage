@@ -1,7 +1,8 @@
 'use client';
 
 import Image from "next/image";
-import axios from "../../../../lib/axios.js";
+import api from "../../../../lib/axios.js";
+import axios, { isAxiosError } from "axios";
 import Link from "next/link";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
@@ -23,12 +24,16 @@ export default function LoginDetail() {
 
         setLoading(true);
         try {
-            await axios.post('/auth/send-otp', { email });
+            await api.post('/auth/send-otp', { email });
             setEmail(email); // store it in context
             toast.success("OTP sent to your mail id!");
             router.push('/otp'); // no query param
-        } catch (err: any) {
-            toast.error(err?.response?.data?.message || "Failed to send OTP.");
+        } catch (err: unknown) {
+            if (isAxiosError(err)) {
+                toast.error(err.response?.data?.message || "Failed to send OTP.");
+            } else {
+                toast.error("Something went wrong.");
+            }
         } finally {
             setLoading(false);
         }
