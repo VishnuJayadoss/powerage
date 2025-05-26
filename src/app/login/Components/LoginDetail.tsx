@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import api from "../../../../lib/axios.js";
-import axios, { isAxiosError } from "axios";
+import { isAxiosError } from "axios";
 import Link from "next/link";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
