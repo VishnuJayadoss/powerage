@@ -14,7 +14,7 @@ import Popupcur from "./(pages)/HomeComponent/Popupcur";
 export default function Home() {
   return (
     <>
-      <Popupcur />
+      <Popupcur /> 
       <Banner />
       <Filter />
       <Columns />
