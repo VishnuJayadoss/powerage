@@ -39,7 +39,7 @@ export default function Tabs() {
     };
 
     return (
-        <section className="mx-auto px-6 py-12 max-w-6xl">
+        <section className="mx-auto md:mt-20 px-6 py-12 max-w-6xl">
             {/* Tabs */}
             <div className="flex justify-center gap-4 mb-8 pb-4 border-red-500 border-b-4">
                 {["india", "europe", "japan"].map((tab) => (

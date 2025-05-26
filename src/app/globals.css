@@ -65,6 +65,7 @@ body {
 .cal-sans {
   font-family: var(--font-cal-sans);
   letter-spacing: 2px;
+  font-weight: 600;
 }
 
 @media(max-width: 576px){

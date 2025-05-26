@@ -53,10 +53,10 @@ const AutoPopup = () => {
                 <h5 className='pb-3 font-black text-[22px]'>Shipping To</h5>
 
                 <div className="flex justify-center items-center gap-5 pt-2">
-                    <button className="bg-red-600 p-2 pr-5 pl-5 rounded text-white cursor-pointer">
+                    <button className="bg-black p-2 pr-5 pl-5 rounded text-white cursor-pointer">
                       India
                     </button>
-                    <button className='bg-red-600 p-2 text-white cursor-pointer'>Other Countries</button>
+                    <button className='bg-black p-2 rounded text-white cursor-pointer'>Other Countries</button>
                 </div>
             </div>
         </div>

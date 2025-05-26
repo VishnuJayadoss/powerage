@@ -5,14 +5,21 @@ import Link from "next/link";
 import Search from "../Header/Components/Search";
 import { X, ChevronRight, ChevronLeft } from 'lucide-react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import CartCount from "../Header/Components/CartCount";
 import { FiShoppingCart } from "react-icons/fi";
+import { usePathname } from "next/navigation";
 
 export default function MobileHeader() {
-
   const [isOpen, setIsOpen] = useState(false)
   const [submenuOpen, setSubmenuOpen] = useState<string | null>(null)
+  const pathname = usePathname();
+
+  // Close drawer on route change
+  useEffect(() => {
+    setIsOpen(false);
+    setSubmenuOpen(null);
+  }, [pathname]);
 
   return (
     <header className="xl:hidden -bottom-1 left-0 z-[100] fixed flex flex-row bg-gray-200 w-full h-[80px]">

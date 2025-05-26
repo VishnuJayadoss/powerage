@@ -6,7 +6,9 @@ export default function Header() {
   return (
     <>
       <header>
-        <TopHeader />
+        <div className="mb-6 md:mb-0 lg:mb-0">
+          <TopHeader />
+        </div>
         <Desktop />
         <MobileHeader />
       </header>

@@ -3,6 +3,7 @@ import "./globals.css";
 import Header from "./Header/page";
 import Footer from "./Footer/page";
 import { DM_Sans } from 'next/font/google'
+import { EmailProvider } from '../context/EmailContext';
 
 const dmSans = DM_Sans({
   subsets: ['latin'],
@@ -27,7 +28,9 @@ export default function RootLayout({
         className={`${dmSans.variable} antialiased`}
       >
         <Header />
-        {children}
+        <EmailProvider>
+          {children}
+        </EmailProvider>
         <Footer />
       </body>
     </html>
