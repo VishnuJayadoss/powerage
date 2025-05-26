@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import Search from "../Header/Components/Search";
-import { X, ChevronRight, ChevronLeft } from 'lucide-react'
+import { ChevronRight, ChevronLeft } from 'lucide-react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useState, useEffect } from "react";
 import CartCount from "../Header/Components/CartCount";
