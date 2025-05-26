@@ -7,7 +7,7 @@ export function middleware (request: NextRequest) {
   const userId = request.cookies.get('user_id')?.value
 
   // Protected routes list
-  const protectedPaths = ['/cart', '/profile']
+  const protectedPaths = ['/cart', '/profile', '/orders', '/checkout']
 
   const isProtected = protectedPaths.some(path =>
     request.nextUrl.pathname.startsWith(path)

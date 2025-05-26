@@ -120,17 +120,6 @@ export default function MobileHeader() {
                     </button>
                   )}
 
-                  {/* Close Button */}
-                  <button
-                    onClick={() => {
-                      setIsOpen(false);
-                      setSubmenuOpen(null);
-                    }}
-                    className="top-4 right-4 z-10 absolute text-white"
-                  >
-                    <X size={24} />
-                  </button>
-
                   {/* Animated Content Switching */}
                   <div className="relative pt-12 w-full h-full">
                     <AnimatePresence mode="wait">
@@ -176,6 +165,17 @@ export default function MobileHeader() {
                       )}
                     </AnimatePresence>
                   </div>
+
+                  {/* Close Button */}
+                  <button
+                    onClick={() => {
+                      setIsOpen(false);
+                      setSubmenuOpen(null);
+                    }}
+                    className="right-4 bottom-4 z-10 absolute bg-red-600 px-5 py-2 text-[18px] text-white"
+                  >
+                    Close
+                  </button>
                 </motion.div>
               </>
             )}

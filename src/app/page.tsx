@@ -1,15 +1,15 @@
-import "./HomeComponent/style.css"
-import Banner from "./HomeComponent/Banner";
-import Filter from "./HomeComponent/Filter";
-import Columns from "./HomeComponent/Columns";
-import NewlyLaunched from "./HomeComponent/NewlyLaunched";
-import Video from "./HomeComponent/Video";
-import BestSeller from "./HomeComponent/BestSeller";
-import Explore from "./HomeComponent/Explore";
-import OurProcess from "./HomeComponent/OurProcess";
-import Assured from "./HomeComponent/Assured";
-import ClientSays from "./HomeComponent/ClientSays";
-import Popupcur from "./HomeComponent/Popupcur";
+import "./(pages)/HomeComponent/style.css"
+import Banner from "./(pages)/HomeComponent/Banner";
+import Filter from "./(pages)/HomeComponent/Banner";
+import Columns from "./(pages)/HomeComponent/Banner"
+import NewlyLaunched from "./(pages)/HomeComponent/Banner";
+import Video from "./(pages)/HomeComponent/Banner";
+import BestSeller from "./(pages)/HomeComponent/Banner";
+import Explore from "./(pages)/HomeComponent/Banner";
+import OurProcess from "./(pages)/HomeComponent/Banner";
+import Assured from "./(pages)/HomeComponent/Banner";
+import ClientSays from "./(pages)/HomeComponent/Banner";
+import Popupcur from "./(pages)/HomeComponent/Banner";
 
 export default function Home() {
   return (
