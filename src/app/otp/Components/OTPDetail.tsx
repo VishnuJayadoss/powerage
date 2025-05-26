@@ -4,7 +4,8 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import axios from "../../../../lib/axios.js";
+import api from "../../../../lib/axios.js";
+import { isAxiosError } from "axios";
 import toast, { Toaster } from "react-hot-toast";
 import { useRouter } from "next/navigation";
 import { useEmail } from '@/context/EmailContext';
@@ -37,7 +38,7 @@ export default function OTPDetail() {
 
         setLoading(true);
         try {
-            const res = await axios.post('/auth/verify-otp', { email: email, otp: code });
+            const res = await api.post('/auth/verify-otp', { email: email, otp: code });
             const { access_token, user } = res.data;
 
             if (access_token && user?.id) {
@@ -52,8 +53,12 @@ export default function OTPDetail() {
             } else {
                 throw new Error("Invalid response from server.");
             }
-        } catch (err: any) {
-            toast.error(err?.response?.data?.message || "OTP verification failed.");
+        } catch (err: unknown) {
+            if (isAxiosError(err)) {
+                toast.error(err?.response?.data?.message || "OTP verification failed.");
+            } else {
+                toast.error("Something went wrong.");
+            }
         } finally {
             setLoading(false);
         }
